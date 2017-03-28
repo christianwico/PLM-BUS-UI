@@ -66,7 +66,7 @@
     <None Include="Resources\BUR.xls" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\BUR_UI.Data\BUR_UI.Entities.csproj">
+    <ProjectReference Include="..\BUR_UI.Entities\BUR_UI.Entities.csproj">
       <Project>{fa435031-e3ae-4331-9b62-7026ebf993dc}</Project>
       <Name>BUR_UI.Entities</Name>
     </ProjectReference>

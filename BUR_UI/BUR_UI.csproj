@@ -231,11 +231,11 @@
       <Project>{4836dc32-19b1-4d3e-95aa-b4afd7ce6ba8}</Project>
       <Name>BUR_UI.Context</Name>
     </ProjectReference>
-    <ProjectReference Include="..\BUR_UI.Data\BUR_UI.Entities.csproj">
+    <ProjectReference Include="..\BUR_UI.Entities\BUR_UI.Entities.csproj">
       <Project>{fa435031-e3ae-4331-9b62-7026ebf993dc}</Project>
       <Name>BUR_UI.Entities</Name>
     </ProjectReference>
-    <ProjectReference Include="..\BUR_UI.Domain\BUR_UI.Logic.csproj">
+    <ProjectReference Include="..\BUR_UI.Logic\BUR_UI.Logic.csproj">
       <Project>{92a613b9-e15a-41c0-8c01-fe149c96964e}</Project>
       <Name>BUR_UI.Logic</Name>
     </ProjectReference>

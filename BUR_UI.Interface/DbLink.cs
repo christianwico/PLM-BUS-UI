@@ -619,5 +619,35 @@ namespace BUR_UI.Interface
 
             return RAO;
         }
+
+        public List<OfficeModel> FillOfficeModel(List<OfficeModel> offices)
+        {
+            using (SqlConnection conn = InitSql())
+            {
+                conn.Open();
+
+                SqlCommand comm = new SqlCommand("SELECT A.Office_Code, A.Office_NameFull, A.Office_NameAbbr, B.Officehead_Name, B.Officehead_Pos " +
+                    "FROM dbo.tbl_A_Certified AS A " +
+                    "INNER JOIN dbo.tbl_Officehead AS B ON A.OfficeheadId = B.OfficeheadId", conn);
+
+                SqlDataReader reader = comm.ExecuteReader();
+
+                if (reader.HasRows)
+                {
+                    while (reader.Read())
+                    {
+                        offices.Add(new OfficeModel() {
+                            OfficeCode = reader.GetString(0),
+                            OfficeName = reader.GetString(1),
+                            OfficeNameAbbr = reader.GetString(2),
+                            Officehead = reader.GetString(3),
+                            OfficeheadPos = reader.GetString(4)
+                        });
+                    }
+                }
+            }
+
+            return offices;
+        }
     }
 }

@@ -1,7 +1,7 @@
-﻿using BUR_UI.Entities;
-using BUR_UI.Context;
-using BUR_UI.Interface;
+﻿using BUR_UI.Context;
+using BUR_UI.Entities;
 using BUR_UI.Logic;
+using BUR_UI.Interface;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -842,6 +842,7 @@ namespace BUR_UI
         {
             List<UserModel> Users = new List<UserModel>();
             List<AccountGridModel> Accounts = new List<AccountGridModel>();
+            List<OfficeModel> Offices = new List<OfficeModel>();
 
             DbLink dbLink = new DbLink();
             if (btnAdmin.Text == "Admin Panel")
@@ -855,7 +856,8 @@ namespace BUR_UI
             {
                 dataGridUsers.Rows.Clear();
                 dataGridAccounts.Rows.Clear();
-                
+                dGridOffices.Rows.Clear();
+
                 if (returnToMain)
                 {
                     btnAdmin.Text = "Admin Panel";
@@ -866,9 +868,25 @@ namespace BUR_UI
 
             Users = dbLink.FillUserModel(Users);
             Accounts = dbLink.FillAccountGridModel(Accounts);
+            Offices = dbLink.FillOfficeModel(Offices);
 
             FillUserGrid(Users);
             FillAccountGrid(Accounts);
+            FillOfficeGrid(Offices);
+        }
+
+        private void FillOfficeGrid(List<OfficeModel> offices)
+        {
+            dGridOffices.Rows.Clear();
+
+            foreach (OfficeModel office in offices)
+            {
+                if (office.OfficeName == "External") continue;
+
+                dGridOffices.Rows.Add(office.OfficeCode,
+                    office.OfficeName, office.OfficeNameAbbr,
+                    office.Officehead, office.OfficeheadPos);
+            }
         }
 
         private void FillAccountGrid(List<AccountGridModel> accounts)
@@ -1282,6 +1300,16 @@ namespace BUR_UI
 
         private void dataGridAccounts_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
+
+        }
+
+        private void dGridOffices_SelectionChanged(object sender, EventArgs e)
+        {
+            lblOfficeName.Text = dGridOffices.SelectedRows[0].Cells[1].Value.ToString() +
+                " (" + dGridOffices.SelectedRows[0].Cells[2].Value.ToString() + ")";
+            lblOfficeHead.Text = dGridOffices.SelectedRows[0].Cells[3].Value.ToString();
+            lblOfficeHeadPos.Text = dGridOffices.SelectedRows[0].Cells[4].Value.ToString();
+
 
         }
 

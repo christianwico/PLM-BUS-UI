@@ -130,6 +130,16 @@
             this.colPosition = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colPicPath = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tabOffices = new System.Windows.Forms.TabPage();
+            this.grpOfficeActions = new System.Windows.Forms.GroupBox();
+            this.btnDeleteOffice = new System.Windows.Forms.Button();
+            this.btnEditOffice = new System.Windows.Forms.Button();
+            this.btnAddOffice = new System.Windows.Forms.Button();
+            this.grpOfficeDetails = new System.Windows.Forms.GroupBox();
+            this.lblOfficeHeadPos = new System.Windows.Forms.Label();
+            this.label26 = new System.Windows.Forms.Label();
+            this.lblOfficeName = new System.Windows.Forms.Label();
+            this.label22 = new System.Windows.Forms.Label();
+            this.dGridOffices = new System.Windows.Forms.DataGridView();
             this.tabPayees = new System.Windows.Forms.TabPage();
             this.tabAccounts = new System.Windows.Forms.TabPage();
             this.grpAcctDetails = new System.Windows.Forms.GroupBox();
@@ -154,24 +164,13 @@
             this.tabLogs = new System.Windows.Forms.TabPage();
             this.txtLogs = new System.Windows.Forms.TextBox();
             this.openFileDialog = new System.Windows.Forms.OpenFileDialog();
-            this.dGridOffices = new System.Windows.Forms.DataGridView();
+            this.lblOfficeHead = new System.Windows.Forms.Label();
+            this.label24 = new System.Windows.Forms.Label();
             this.officeCode = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.officeNameFull = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.officeAbbr = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.officehead = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.grpOfficeDetails = new System.Windows.Forms.GroupBox();
-            this.grpOfficeActions = new System.Windows.Forms.GroupBox();
-            this.button2 = new System.Windows.Forms.Button();
-            this.button3 = new System.Windows.Forms.Button();
-            this.button6 = new System.Windows.Forms.Button();
-            this.label19 = new System.Windows.Forms.Label();
-            this.label20 = new System.Windows.Forms.Label();
-            this.label21 = new System.Windows.Forms.Label();
-            this.label22 = new System.Windows.Forms.Label();
-            this.label23 = new System.Windows.Forms.Label();
-            this.label24 = new System.Windows.Forms.Label();
-            this.label25 = new System.Windows.Forms.Label();
-            this.label26 = new System.Windows.Forms.Label();
+            this.officeheadPos = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.grpUser.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.picPic)).BeginInit();
             this.contextMenuStrip1.SuspendLayout();
@@ -192,14 +191,14 @@
             ((System.ComponentModel.ISupportInitialize)(this.picUserDetail)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridUsers)).BeginInit();
             this.tabOffices.SuspendLayout();
+            this.grpOfficeActions.SuspendLayout();
+            this.grpOfficeDetails.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dGridOffices)).BeginInit();
             this.tabAccounts.SuspendLayout();
             this.grpAcctDetails.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numAB)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridAccounts)).BeginInit();
             this.tabLogs.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dGridOffices)).BeginInit();
-            this.grpOfficeDetails.SuspendLayout();
-            this.grpOfficeActions.SuspendLayout();
             this.SuspendLayout();
             // 
             // lblUser
@@ -1255,6 +1254,126 @@
             this.tabOffices.TabIndex = 3;
             this.tabOffices.Text = "Offices";
             // 
+            // grpOfficeActions
+            // 
+            this.grpOfficeActions.Controls.Add(this.btnDeleteOffice);
+            this.grpOfficeActions.Controls.Add(this.btnEditOffice);
+            this.grpOfficeActions.Controls.Add(this.btnAddOffice);
+            this.grpOfficeActions.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.grpOfficeActions.Location = new System.Drawing.Point(861, 17);
+            this.grpOfficeActions.Name = "grpOfficeActions";
+            this.grpOfficeActions.Size = new System.Drawing.Size(332, 121);
+            this.grpOfficeActions.TabIndex = 2;
+            this.grpOfficeActions.TabStop = false;
+            this.grpOfficeActions.Text = "Office Actions";
+            // 
+            // btnDeleteOffice
+            // 
+            this.btnDeleteOffice.Enabled = false;
+            this.btnDeleteOffice.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.btnDeleteOffice.Location = new System.Drawing.Point(180, 48);
+            this.btnDeleteOffice.Name = "btnDeleteOffice";
+            this.btnDeleteOffice.Size = new System.Drawing.Size(100, 30);
+            this.btnDeleteOffice.TabIndex = 2;
+            this.btnDeleteOffice.Text = "Delete Office";
+            this.btnDeleteOffice.UseVisualStyleBackColor = true;
+            // 
+            // btnEditOffice
+            // 
+            this.btnEditOffice.Enabled = false;
+            this.btnEditOffice.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.btnEditOffice.Location = new System.Drawing.Point(74, 64);
+            this.btnEditOffice.Name = "btnEditOffice";
+            this.btnEditOffice.Size = new System.Drawing.Size(100, 30);
+            this.btnEditOffice.TabIndex = 1;
+            this.btnEditOffice.Text = "Edit Office";
+            this.btnEditOffice.UseVisualStyleBackColor = true;
+            // 
+            // btnAddOffice
+            // 
+            this.btnAddOffice.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.btnAddOffice.Location = new System.Drawing.Point(74, 28);
+            this.btnAddOffice.Name = "btnAddOffice";
+            this.btnAddOffice.Size = new System.Drawing.Size(100, 30);
+            this.btnAddOffice.TabIndex = 0;
+            this.btnAddOffice.Text = "Add Office";
+            this.btnAddOffice.UseVisualStyleBackColor = true;
+            // 
+            // grpOfficeDetails
+            // 
+            this.grpOfficeDetails.Controls.Add(this.lblOfficeHeadPos);
+            this.grpOfficeDetails.Controls.Add(this.label26);
+            this.grpOfficeDetails.Controls.Add(this.lblOfficeHead);
+            this.grpOfficeDetails.Controls.Add(this.label24);
+            this.grpOfficeDetails.Controls.Add(this.lblOfficeName);
+            this.grpOfficeDetails.Controls.Add(this.label22);
+            this.grpOfficeDetails.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.grpOfficeDetails.Location = new System.Drawing.Point(15, 17);
+            this.grpOfficeDetails.Name = "grpOfficeDetails";
+            this.grpOfficeDetails.Size = new System.Drawing.Size(840, 121);
+            this.grpOfficeDetails.TabIndex = 1;
+            this.grpOfficeDetails.TabStop = false;
+            this.grpOfficeDetails.Text = "Office Details";
+            // 
+            // lblOfficeHeadPos
+            // 
+            this.lblOfficeHeadPos.AutoSize = true;
+            this.lblOfficeHeadPos.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblOfficeHeadPos.Location = new System.Drawing.Point(215, 79);
+            this.lblOfficeHeadPos.Name = "lblOfficeHeadPos";
+            this.lblOfficeHeadPos.Size = new System.Drawing.Size(126, 17);
+            this.lblOfficeHeadPos.TabIndex = 7;
+            this.lblOfficeHeadPos.Text = "(No office selected.)";
+            // 
+            // label26
+            // 
+            this.label26.AutoSize = true;
+            this.label26.Location = new System.Drawing.Point(13, 79);
+            this.label26.Name = "label26";
+            this.label26.Size = new System.Drawing.Size(127, 17);
+            this.label26.TabIndex = 6;
+            this.label26.Text = "Office Head Position";
+            // 
+            // lblOfficeName
+            // 
+            this.lblOfficeName.AutoSize = true;
+            this.lblOfficeName.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblOfficeName.Location = new System.Drawing.Point(215, 35);
+            this.lblOfficeName.Name = "lblOfficeName";
+            this.lblOfficeName.Size = new System.Drawing.Size(126, 17);
+            this.lblOfficeName.TabIndex = 3;
+            this.lblOfficeName.Text = "(No office selected.)";
+            // 
+            // label22
+            // 
+            this.label22.AutoSize = true;
+            this.label22.Location = new System.Drawing.Point(13, 35);
+            this.label22.Name = "label22";
+            this.label22.Size = new System.Drawing.Size(81, 17);
+            this.label22.TabIndex = 2;
+            this.label22.Text = "Office Name";
+            // 
+            // dGridOffices
+            // 
+            this.dGridOffices.AllowUserToAddRows = false;
+            this.dGridOffices.AllowUserToDeleteRows = false;
+            this.dGridOffices.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dGridOffices.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.officeCode,
+            this.officeNameFull,
+            this.officeAbbr,
+            this.officehead,
+            this.officeheadPos});
+            this.dGridOffices.Location = new System.Drawing.Point(15, 152);
+            this.dGridOffices.MultiSelect = false;
+            this.dGridOffices.Name = "dGridOffices";
+            this.dGridOffices.ReadOnly = true;
+            this.dGridOffices.RowHeadersWidth = 4;
+            this.dGridOffices.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dGridOffices.Size = new System.Drawing.Size(1187, 300);
+            this.dGridOffices.TabIndex = 0;
+            this.dGridOffices.SelectionChanged += new System.EventHandler(this.dGridOffices_SelectionChanged);
+            // 
             // tabPayees
             // 
             this.tabPayees.BackColor = System.Drawing.Color.DimGray;
@@ -1516,35 +1635,37 @@
             this.openFileDialog.FileName = "openFileDialog";
             this.openFileDialog.Title = "Select image";
             // 
-            // dGridOffices
+            // lblOfficeHead
             // 
-            this.dGridOffices.AllowUserToAddRows = false;
-            this.dGridOffices.AllowUserToDeleteRows = false;
-            this.dGridOffices.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dGridOffices.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.officeCode,
-            this.officeNameFull,
-            this.officeAbbr,
-            this.officehead});
-            this.dGridOffices.Location = new System.Drawing.Point(15, 152);
-            this.dGridOffices.MultiSelect = false;
-            this.dGridOffices.Name = "dGridOffices";
-            this.dGridOffices.ReadOnly = true;
-            this.dGridOffices.RowHeadersWidth = 4;
-            this.dGridOffices.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dGridOffices.Size = new System.Drawing.Size(1187, 300);
-            this.dGridOffices.TabIndex = 0;
+            this.lblOfficeHead.AutoSize = true;
+            this.lblOfficeHead.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblOfficeHead.Location = new System.Drawing.Point(215, 58);
+            this.lblOfficeHead.Name = "lblOfficeHead";
+            this.lblOfficeHead.Size = new System.Drawing.Size(126, 17);
+            this.lblOfficeHead.TabIndex = 5;
+            this.lblOfficeHead.Text = "(No office selected.)";
+            // 
+            // label24
+            // 
+            this.label24.AutoSize = true;
+            this.label24.Location = new System.Drawing.Point(13, 58);
+            this.label24.Name = "label24";
+            this.label24.Size = new System.Drawing.Size(77, 17);
+            this.label24.TabIndex = 4;
+            this.label24.Text = "Office Head";
             // 
             // officeCode
             // 
+            this.officeCode.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.officeCode.FillWeight = 10F;
             this.officeCode.HeaderText = "Office Code";
             this.officeCode.Name = "officeCode";
             this.officeCode.ReadOnly = true;
-            this.officeCode.Visible = false;
             // 
             // officeNameFull
             // 
             this.officeNameFull.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.officeNameFull.FillWeight = 30F;
             this.officeNameFull.HeaderText = "Office Name";
             this.officeNameFull.Name = "officeNameFull";
             this.officeNameFull.ReadOnly = true;
@@ -1558,155 +1679,19 @@
             // 
             // officehead
             // 
+            this.officehead.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.officehead.FillWeight = 30F;
             this.officehead.HeaderText = "Office Head";
             this.officehead.Name = "officehead";
             this.officehead.ReadOnly = true;
-            this.officehead.Visible = false;
             // 
-            // grpOfficeDetails
+            // officeheadPos
             // 
-            this.grpOfficeDetails.Controls.Add(this.label25);
-            this.grpOfficeDetails.Controls.Add(this.label26);
-            this.grpOfficeDetails.Controls.Add(this.label23);
-            this.grpOfficeDetails.Controls.Add(this.label24);
-            this.grpOfficeDetails.Controls.Add(this.label21);
-            this.grpOfficeDetails.Controls.Add(this.label22);
-            this.grpOfficeDetails.Controls.Add(this.label20);
-            this.grpOfficeDetails.Controls.Add(this.label19);
-            this.grpOfficeDetails.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.grpOfficeDetails.Location = new System.Drawing.Point(15, 17);
-            this.grpOfficeDetails.Name = "grpOfficeDetails";
-            this.grpOfficeDetails.Size = new System.Drawing.Size(840, 121);
-            this.grpOfficeDetails.TabIndex = 1;
-            this.grpOfficeDetails.TabStop = false;
-            this.grpOfficeDetails.Text = "Office Details";
-            // 
-            // grpOfficeActions
-            // 
-            this.grpOfficeActions.Controls.Add(this.button6);
-            this.grpOfficeActions.Controls.Add(this.button3);
-            this.grpOfficeActions.Controls.Add(this.button2);
-            this.grpOfficeActions.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.grpOfficeActions.Location = new System.Drawing.Point(861, 17);
-            this.grpOfficeActions.Name = "grpOfficeActions";
-            this.grpOfficeActions.Size = new System.Drawing.Size(332, 121);
-            this.grpOfficeActions.TabIndex = 2;
-            this.grpOfficeActions.TabStop = false;
-            this.grpOfficeActions.Text = "Office Actions";
-            // 
-            // button2
-            // 
-            this.button2.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button2.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.button2.Location = new System.Drawing.Point(69, 27);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(102, 35);
-            this.button2.TabIndex = 6;
-            this.button2.Text = "New Office";
-            this.button2.UseVisualStyleBackColor = true;
-            this.button2.Visible = false;
-            // 
-            // button3
-            // 
-            this.button3.Enabled = false;
-            this.button3.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button3.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.button3.Location = new System.Drawing.Point(69, 67);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(102, 35);
-            this.button3.TabIndex = 7;
-            this.button3.Text = "Edit Office";
-            this.button3.UseVisualStyleBackColor = true;
-            this.button3.Visible = false;
-            // 
-            // button6
-            // 
-            this.button6.Enabled = false;
-            this.button6.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button6.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.button6.Location = new System.Drawing.Point(179, 48);
-            this.button6.Name = "button6";
-            this.button6.Size = new System.Drawing.Size(102, 35);
-            this.button6.TabIndex = 8;
-            this.button6.Text = "Delete Office";
-            this.button6.UseVisualStyleBackColor = true;
-            this.button6.Visible = false;
-            // 
-            // label19
-            // 
-            this.label19.AutoSize = true;
-            this.label19.Location = new System.Drawing.Point(16, 27);
-            this.label19.Name = "label19";
-            this.label19.Size = new System.Drawing.Size(77, 17);
-            this.label19.TabIndex = 0;
-            this.label19.Text = "Office Code";
-            // 
-            // label20
-            // 
-            this.label20.AutoSize = true;
-            this.label20.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label20.Location = new System.Drawing.Point(218, 27);
-            this.label20.Name = "label20";
-            this.label20.Size = new System.Drawing.Size(126, 17);
-            this.label20.TabIndex = 1;
-            this.label20.Text = "(No office selected.)";
-            // 
-            // label21
-            // 
-            this.label21.AutoSize = true;
-            this.label21.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label21.Location = new System.Drawing.Point(218, 48);
-            this.label21.Name = "label21";
-            this.label21.Size = new System.Drawing.Size(126, 17);
-            this.label21.TabIndex = 3;
-            this.label21.Text = "(No office selected.)";
-            // 
-            // label22
-            // 
-            this.label22.AutoSize = true;
-            this.label22.Location = new System.Drawing.Point(16, 48);
-            this.label22.Name = "label22";
-            this.label22.Size = new System.Drawing.Size(112, 17);
-            this.label22.TabIndex = 2;
-            this.label22.Text = "Office Name (Full)";
-            // 
-            // label23
-            // 
-            this.label23.AutoSize = true;
-            this.label23.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label23.Location = new System.Drawing.Point(218, 71);
-            this.label23.Name = "label23";
-            this.label23.Size = new System.Drawing.Size(126, 17);
-            this.label23.TabIndex = 5;
-            this.label23.Text = "(No office selected.)";
-            // 
-            // label24
-            // 
-            this.label24.AutoSize = true;
-            this.label24.Location = new System.Drawing.Point(16, 71);
-            this.label24.Name = "label24";
-            this.label24.Size = new System.Drawing.Size(124, 17);
-            this.label24.TabIndex = 4;
-            this.label24.Text = "Office Name (Short)";
-            // 
-            // label25
-            // 
-            this.label25.AutoSize = true;
-            this.label25.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label25.Location = new System.Drawing.Point(218, 92);
-            this.label25.Name = "label25";
-            this.label25.Size = new System.Drawing.Size(126, 17);
-            this.label25.TabIndex = 7;
-            this.label25.Text = "(No office selected.)";
-            // 
-            // label26
-            // 
-            this.label26.AutoSize = true;
-            this.label26.Location = new System.Drawing.Point(16, 92);
-            this.label26.Name = "label26";
-            this.label26.Size = new System.Drawing.Size(77, 17);
-            this.label26.TabIndex = 6;
-            this.label26.Text = "Office Head";
+            this.officeheadPos.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.officeheadPos.FillWeight = 30F;
+            this.officeheadPos.HeaderText = "Office Head Position";
+            this.officeheadPos.Name = "officeheadPos";
+            this.officeheadPos.ReadOnly = true;
             // 
             // Form1
             // 
@@ -1755,6 +1740,10 @@
             ((System.ComponentModel.ISupportInitialize)(this.picUserDetail)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridUsers)).EndInit();
             this.tabOffices.ResumeLayout(false);
+            this.grpOfficeActions.ResumeLayout(false);
+            this.grpOfficeDetails.ResumeLayout(false);
+            this.grpOfficeDetails.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dGridOffices)).EndInit();
             this.tabAccounts.ResumeLayout(false);
             this.grpAcctDetails.ResumeLayout(false);
             this.grpAcctDetails.PerformLayout();
@@ -1762,10 +1751,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.dataGridAccounts)).EndInit();
             this.tabLogs.ResumeLayout(false);
             this.tabLogs.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dGridOffices)).EndInit();
-            this.grpOfficeDetails.ResumeLayout(false);
-            this.grpOfficeDetails.PerformLayout();
-            this.grpOfficeActions.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -1896,23 +1881,22 @@
         private System.Windows.Forms.TabPage tabOffices;
         private System.Windows.Forms.TabPage tabPayees;
         private System.Windows.Forms.GroupBox grpOfficeActions;
-        private System.Windows.Forms.Button button6;
-        private System.Windows.Forms.Button button3;
-        private System.Windows.Forms.Button button2;
         private System.Windows.Forms.GroupBox grpOfficeDetails;
-        private System.Windows.Forms.Label label25;
+        private System.Windows.Forms.Label lblOfficeHeadPos;
         private System.Windows.Forms.Label label26;
-        private System.Windows.Forms.Label label23;
-        private System.Windows.Forms.Label label24;
-        private System.Windows.Forms.Label label21;
+        private System.Windows.Forms.Label lblOfficeName;
         private System.Windows.Forms.Label label22;
-        private System.Windows.Forms.Label label20;
-        private System.Windows.Forms.Label label19;
         private System.Windows.Forms.DataGridView dGridOffices;
+        private System.Windows.Forms.Button btnDeleteOffice;
+        private System.Windows.Forms.Button btnEditOffice;
+        private System.Windows.Forms.Button btnAddOffice;
+        private System.Windows.Forms.Label lblOfficeHead;
+        private System.Windows.Forms.Label label24;
         private System.Windows.Forms.DataGridViewTextBoxColumn officeCode;
         private System.Windows.Forms.DataGridViewTextBoxColumn officeNameFull;
         private System.Windows.Forms.DataGridViewTextBoxColumn officeAbbr;
         private System.Windows.Forms.DataGridViewTextBoxColumn officehead;
+        private System.Windows.Forms.DataGridViewTextBoxColumn officeheadPos;
     }
 }
 

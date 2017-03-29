@@ -148,6 +148,24 @@
             this.officehead = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.officeheadPos = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tabPayees = new System.Windows.Forms.TabPage();
+            this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.lblPayeeOffice = new System.Windows.Forms.Label();
+            this.label29 = new System.Windows.Forms.Label();
+            this.lblPayeePos = new System.Windows.Forms.Label();
+            this.label20 = new System.Windows.Forms.Label();
+            this.lblPayeeName = new System.Windows.Forms.Label();
+            this.label23 = new System.Windows.Forms.Label();
+            this.lblPayeeNumber = new System.Windows.Forms.Label();
+            this.label27 = new System.Windows.Forms.Label();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.button2 = new System.Windows.Forms.Button();
+            this.btnEditPayee = new System.Windows.Forms.Button();
+            this.btnAddPayee = new System.Windows.Forms.Button();
+            this.dGridPayee = new System.Windows.Forms.DataGridView();
+            this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tabAccounts = new System.Windows.Forms.TabPage();
             this.grpAcctDetails = new System.Windows.Forms.GroupBox();
             this.txtAcctCode = new System.Windows.Forms.TextBox();
@@ -171,24 +189,6 @@
             this.tabLogs = new System.Windows.Forms.TabPage();
             this.txtLogs = new System.Windows.Forms.TextBox();
             this.openFileDialog = new System.Windows.Forms.OpenFileDialog();
-            this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.button2 = new System.Windows.Forms.Button();
-            this.btnEditPayee = new System.Windows.Forms.Button();
-            this.btnAddPayee = new System.Windows.Forms.Button();
-            this.dGridPayee = new System.Windows.Forms.DataGridView();
-            this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.lblPayeePos = new System.Windows.Forms.Label();
-            this.label20 = new System.Windows.Forms.Label();
-            this.lblPayeeName = new System.Windows.Forms.Label();
-            this.label23 = new System.Windows.Forms.Label();
-            this.lblPayeeNumber = new System.Windows.Forms.Label();
-            this.label27 = new System.Windows.Forms.Label();
-            this.lblPayeeOffice = new System.Windows.Forms.Label();
-            this.label29 = new System.Windows.Forms.Label();
             this.grpUser.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.picPic)).BeginInit();
             this.contextMenuStrip1.SuspendLayout();
@@ -213,14 +213,14 @@
             this.grpOfficeDetails.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dGridOffices)).BeginInit();
             this.tabPayees.SuspendLayout();
+            this.groupBox2.SuspendLayout();
+            this.groupBox1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dGridPayee)).BeginInit();
             this.tabAccounts.SuspendLayout();
             this.grpAcctDetails.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numAB)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridAccounts)).BeginInit();
             this.tabLogs.SuspendLayout();
-            this.groupBox1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dGridPayee)).BeginInit();
-            this.groupBox2.SuspendLayout();
             this.SuspendLayout();
             // 
             // lblUser
@@ -1270,9 +1270,9 @@
             this.tabOffices.Controls.Add(this.grpOfficeActions);
             this.tabOffices.Controls.Add(this.grpOfficeDetails);
             this.tabOffices.Controls.Add(this.dGridOffices);
-            this.tabOffices.Location = new System.Drawing.Point(4, 26);
+            this.tabOffices.Location = new System.Drawing.Point(4, 22);
             this.tabOffices.Name = "tabOffices";
-            this.tabOffices.Size = new System.Drawing.Size(1216, 466);
+            this.tabOffices.Size = new System.Drawing.Size(1216, 470);
             this.tabOffices.TabIndex = 3;
             this.tabOffices.Text = "Offices";
             // 
@@ -1469,6 +1469,201 @@
             this.tabPayees.Size = new System.Drawing.Size(1216, 466);
             this.tabPayees.TabIndex = 4;
             this.tabPayees.Text = "Payees";
+            // 
+            // groupBox2
+            // 
+            this.groupBox2.Controls.Add(this.lblPayeeOffice);
+            this.groupBox2.Controls.Add(this.label29);
+            this.groupBox2.Controls.Add(this.lblPayeePos);
+            this.groupBox2.Controls.Add(this.label20);
+            this.groupBox2.Controls.Add(this.lblPayeeName);
+            this.groupBox2.Controls.Add(this.label23);
+            this.groupBox2.Controls.Add(this.lblPayeeNumber);
+            this.groupBox2.Controls.Add(this.label27);
+            this.groupBox2.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.groupBox2.Location = new System.Drawing.Point(15, 17);
+            this.groupBox2.Name = "groupBox2";
+            this.groupBox2.Size = new System.Drawing.Size(840, 121);
+            this.groupBox2.TabIndex = 5;
+            this.groupBox2.TabStop = false;
+            this.groupBox2.Text = "Payee Details";
+            // 
+            // lblPayeeOffice
+            // 
+            this.lblPayeeOffice.AutoSize = true;
+            this.lblPayeeOffice.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblPayeeOffice.Location = new System.Drawing.Point(215, 86);
+            this.lblPayeeOffice.Name = "lblPayeeOffice";
+            this.lblPayeeOffice.Size = new System.Drawing.Size(131, 17);
+            this.lblPayeeOffice.TabIndex = 9;
+            this.lblPayeeOffice.Text = "(No Payee Selected.)";
+            // 
+            // label29
+            // 
+            this.label29.AutoSize = true;
+            this.label29.Location = new System.Drawing.Point(13, 86);
+            this.label29.Name = "label29";
+            this.label29.Size = new System.Drawing.Size(42, 17);
+            this.label29.TabIndex = 8;
+            this.label29.Text = "Office";
+            // 
+            // lblPayeePos
+            // 
+            this.lblPayeePos.AutoSize = true;
+            this.lblPayeePos.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblPayeePos.Location = new System.Drawing.Point(215, 64);
+            this.lblPayeePos.Name = "lblPayeePos";
+            this.lblPayeePos.Size = new System.Drawing.Size(131, 17);
+            this.lblPayeePos.TabIndex = 7;
+            this.lblPayeePos.Text = "(No Payee Selected.)";
+            // 
+            // label20
+            // 
+            this.label20.AutoSize = true;
+            this.label20.Location = new System.Drawing.Point(13, 64);
+            this.label20.Name = "label20";
+            this.label20.Size = new System.Drawing.Size(115, 17);
+            this.label20.TabIndex = 6;
+            this.label20.Text = "Employee Position";
+            // 
+            // lblPayeeName
+            // 
+            this.lblPayeeName.AutoSize = true;
+            this.lblPayeeName.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblPayeeName.Location = new System.Drawing.Point(215, 43);
+            this.lblPayeeName.Name = "lblPayeeName";
+            this.lblPayeeName.Size = new System.Drawing.Size(131, 17);
+            this.lblPayeeName.TabIndex = 5;
+            this.lblPayeeName.Text = "(No Payee Selected.)";
+            // 
+            // label23
+            // 
+            this.label23.AutoSize = true;
+            this.label23.Location = new System.Drawing.Point(13, 43);
+            this.label23.Name = "label23";
+            this.label23.Size = new System.Drawing.Size(104, 17);
+            this.label23.TabIndex = 4;
+            this.label23.Text = "Employee Name";
+            // 
+            // lblPayeeNumber
+            // 
+            this.lblPayeeNumber.AutoSize = true;
+            this.lblPayeeNumber.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblPayeeNumber.Location = new System.Drawing.Point(215, 20);
+            this.lblPayeeNumber.Name = "lblPayeeNumber";
+            this.lblPayeeNumber.Size = new System.Drawing.Size(131, 17);
+            this.lblPayeeNumber.TabIndex = 3;
+            this.lblPayeeNumber.Text = "(No Payee Selected.)";
+            // 
+            // label27
+            // 
+            this.label27.AutoSize = true;
+            this.label27.Location = new System.Drawing.Point(13, 20);
+            this.label27.Name = "label27";
+            this.label27.Size = new System.Drawing.Size(117, 17);
+            this.label27.TabIndex = 2;
+            this.label27.Text = "Employee Number";
+            // 
+            // groupBox1
+            // 
+            this.groupBox1.Controls.Add(this.button2);
+            this.groupBox1.Controls.Add(this.btnEditPayee);
+            this.groupBox1.Controls.Add(this.btnAddPayee);
+            this.groupBox1.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.groupBox1.Location = new System.Drawing.Point(861, 16);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(332, 121);
+            this.groupBox1.TabIndex = 4;
+            this.groupBox1.TabStop = false;
+            this.groupBox1.Text = "Payee Actions";
+            // 
+            // button2
+            // 
+            this.button2.Enabled = false;
+            this.button2.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.button2.Location = new System.Drawing.Point(180, 48);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(100, 30);
+            this.button2.TabIndex = 2;
+            this.button2.Text = "Delete Office";
+            this.button2.UseVisualStyleBackColor = true;
+            this.button2.Visible = false;
+            // 
+            // btnEditPayee
+            // 
+            this.btnEditPayee.Enabled = false;
+            this.btnEditPayee.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.btnEditPayee.Location = new System.Drawing.Point(74, 64);
+            this.btnEditPayee.Name = "btnEditPayee";
+            this.btnEditPayee.Size = new System.Drawing.Size(100, 30);
+            this.btnEditPayee.TabIndex = 1;
+            this.btnEditPayee.Text = "Edit Payee";
+            this.btnEditPayee.UseVisualStyleBackColor = true;
+            this.btnEditPayee.Click += new System.EventHandler(this.btnEditPayee_Click);
+            // 
+            // btnAddPayee
+            // 
+            this.btnAddPayee.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.btnAddPayee.Location = new System.Drawing.Point(74, 28);
+            this.btnAddPayee.Name = "btnAddPayee";
+            this.btnAddPayee.Size = new System.Drawing.Size(100, 30);
+            this.btnAddPayee.TabIndex = 0;
+            this.btnAddPayee.Text = "Add Payee";
+            this.btnAddPayee.UseVisualStyleBackColor = true;
+            this.btnAddPayee.Click += new System.EventHandler(this.btnAddPayee_Click);
+            // 
+            // dGridPayee
+            // 
+            this.dGridPayee.AllowUserToAddRows = false;
+            this.dGridPayee.AllowUserToDeleteRows = false;
+            this.dGridPayee.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dGridPayee.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.dataGridViewTextBoxColumn2,
+            this.dataGridViewTextBoxColumn3,
+            this.dataGridViewTextBoxColumn4,
+            this.dataGridViewTextBoxColumn5});
+            this.dGridPayee.Location = new System.Drawing.Point(15, 151);
+            this.dGridPayee.MultiSelect = false;
+            this.dGridPayee.Name = "dGridPayee";
+            this.dGridPayee.ReadOnly = true;
+            this.dGridPayee.RowHeadersWidth = 4;
+            this.dGridPayee.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dGridPayee.Size = new System.Drawing.Size(1187, 300);
+            this.dGridPayee.TabIndex = 3;
+            this.dGridPayee.SelectionChanged += new System.EventHandler(this.dGridPayee_SelectionChanged);
+            // 
+            // dataGridViewTextBoxColumn2
+            // 
+            this.dataGridViewTextBoxColumn2.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.dataGridViewTextBoxColumn2.FillWeight = 30F;
+            this.dataGridViewTextBoxColumn2.HeaderText = "Employee Number";
+            this.dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
+            this.dataGridViewTextBoxColumn2.ReadOnly = true;
+            // 
+            // dataGridViewTextBoxColumn3
+            // 
+            this.dataGridViewTextBoxColumn3.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.dataGridViewTextBoxColumn3.FillWeight = 40F;
+            this.dataGridViewTextBoxColumn3.HeaderText = "Employee Name";
+            this.dataGridViewTextBoxColumn3.Name = "dataGridViewTextBoxColumn3";
+            this.dataGridViewTextBoxColumn3.ReadOnly = true;
+            // 
+            // dataGridViewTextBoxColumn4
+            // 
+            this.dataGridViewTextBoxColumn4.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.dataGridViewTextBoxColumn4.FillWeight = 30F;
+            this.dataGridViewTextBoxColumn4.HeaderText = "Position";
+            this.dataGridViewTextBoxColumn4.Name = "dataGridViewTextBoxColumn4";
+            this.dataGridViewTextBoxColumn4.ReadOnly = true;
+            // 
+            // dataGridViewTextBoxColumn5
+            // 
+            this.dataGridViewTextBoxColumn5.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.dataGridViewTextBoxColumn5.FillWeight = 30F;
+            this.dataGridViewTextBoxColumn5.HeaderText = "Office";
+            this.dataGridViewTextBoxColumn5.Name = "dataGridViewTextBoxColumn5";
+            this.dataGridViewTextBoxColumn5.ReadOnly = true;
+            this.dataGridViewTextBoxColumn5.Visible = false;
             // 
             // tabAccounts
             // 
@@ -1722,199 +1917,6 @@
             this.openFileDialog.FileName = "openFileDialog";
             this.openFileDialog.Title = "Select image";
             // 
-            // groupBox1
-            // 
-            this.groupBox1.Controls.Add(this.button2);
-            this.groupBox1.Controls.Add(this.btnEditPayee);
-            this.groupBox1.Controls.Add(this.btnAddPayee);
-            this.groupBox1.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.groupBox1.Location = new System.Drawing.Point(861, 16);
-            this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(332, 121);
-            this.groupBox1.TabIndex = 4;
-            this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "Payee Actions";
-            // 
-            // button2
-            // 
-            this.button2.Enabled = false;
-            this.button2.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.button2.Location = new System.Drawing.Point(180, 48);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(100, 30);
-            this.button2.TabIndex = 2;
-            this.button2.Text = "Delete Office";
-            this.button2.UseVisualStyleBackColor = true;
-            this.button2.Visible = false;
-            // 
-            // btnEditPayee
-            // 
-            this.btnEditPayee.Enabled = false;
-            this.btnEditPayee.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.btnEditPayee.Location = new System.Drawing.Point(74, 64);
-            this.btnEditPayee.Name = "btnEditPayee";
-            this.btnEditPayee.Size = new System.Drawing.Size(100, 30);
-            this.btnEditPayee.TabIndex = 1;
-            this.btnEditPayee.Text = "Edit Payee";
-            this.btnEditPayee.UseVisualStyleBackColor = true;
-            // 
-            // btnAddPayee
-            // 
-            this.btnAddPayee.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.btnAddPayee.Location = new System.Drawing.Point(74, 28);
-            this.btnAddPayee.Name = "btnAddPayee";
-            this.btnAddPayee.Size = new System.Drawing.Size(100, 30);
-            this.btnAddPayee.TabIndex = 0;
-            this.btnAddPayee.Text = "Add Payee";
-            this.btnAddPayee.UseVisualStyleBackColor = true;
-            // 
-            // dGridPayee
-            // 
-            this.dGridPayee.AllowUserToAddRows = false;
-            this.dGridPayee.AllowUserToDeleteRows = false;
-            this.dGridPayee.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dGridPayee.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.dataGridViewTextBoxColumn2,
-            this.dataGridViewTextBoxColumn3,
-            this.dataGridViewTextBoxColumn4,
-            this.dataGridViewTextBoxColumn5});
-            this.dGridPayee.Location = new System.Drawing.Point(15, 151);
-            this.dGridPayee.MultiSelect = false;
-            this.dGridPayee.Name = "dGridPayee";
-            this.dGridPayee.ReadOnly = true;
-            this.dGridPayee.RowHeadersWidth = 4;
-            this.dGridPayee.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dGridPayee.Size = new System.Drawing.Size(1187, 300);
-            this.dGridPayee.TabIndex = 3;
-            this.dGridPayee.SelectionChanged += new System.EventHandler(this.dGridPayee_SelectionChanged);
-            // 
-            // dataGridViewTextBoxColumn2
-            // 
-            this.dataGridViewTextBoxColumn2.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.dataGridViewTextBoxColumn2.FillWeight = 30F;
-            this.dataGridViewTextBoxColumn2.HeaderText = "Employee Number";
-            this.dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
-            this.dataGridViewTextBoxColumn2.ReadOnly = true;
-            // 
-            // dataGridViewTextBoxColumn3
-            // 
-            this.dataGridViewTextBoxColumn3.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.dataGridViewTextBoxColumn3.FillWeight = 40F;
-            this.dataGridViewTextBoxColumn3.HeaderText = "Employee Name";
-            this.dataGridViewTextBoxColumn3.Name = "dataGridViewTextBoxColumn3";
-            this.dataGridViewTextBoxColumn3.ReadOnly = true;
-            // 
-            // dataGridViewTextBoxColumn4
-            // 
-            this.dataGridViewTextBoxColumn4.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.dataGridViewTextBoxColumn4.FillWeight = 30F;
-            this.dataGridViewTextBoxColumn4.HeaderText = "Position";
-            this.dataGridViewTextBoxColumn4.Name = "dataGridViewTextBoxColumn4";
-            this.dataGridViewTextBoxColumn4.ReadOnly = true;
-            // 
-            // dataGridViewTextBoxColumn5
-            // 
-            this.dataGridViewTextBoxColumn5.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.dataGridViewTextBoxColumn5.FillWeight = 30F;
-            this.dataGridViewTextBoxColumn5.HeaderText = "Office";
-            this.dataGridViewTextBoxColumn5.Name = "dataGridViewTextBoxColumn5";
-            this.dataGridViewTextBoxColumn5.ReadOnly = true;
-            this.dataGridViewTextBoxColumn5.Visible = false;
-            // 
-            // groupBox2
-            // 
-            this.groupBox2.Controls.Add(this.lblPayeeOffice);
-            this.groupBox2.Controls.Add(this.label29);
-            this.groupBox2.Controls.Add(this.lblPayeePos);
-            this.groupBox2.Controls.Add(this.label20);
-            this.groupBox2.Controls.Add(this.lblPayeeName);
-            this.groupBox2.Controls.Add(this.label23);
-            this.groupBox2.Controls.Add(this.lblPayeeNumber);
-            this.groupBox2.Controls.Add(this.label27);
-            this.groupBox2.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.groupBox2.Location = new System.Drawing.Point(15, 17);
-            this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(840, 121);
-            this.groupBox2.TabIndex = 5;
-            this.groupBox2.TabStop = false;
-            this.groupBox2.Text = "Payee Details";
-            // 
-            // lblPayeePos
-            // 
-            this.lblPayeePos.AutoSize = true;
-            this.lblPayeePos.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblPayeePos.Location = new System.Drawing.Point(215, 64);
-            this.lblPayeePos.Name = "lblPayeePos";
-            this.lblPayeePos.Size = new System.Drawing.Size(131, 17);
-            this.lblPayeePos.TabIndex = 7;
-            this.lblPayeePos.Text = "(No Payee Selected.)";
-            // 
-            // label20
-            // 
-            this.label20.AutoSize = true;
-            this.label20.Location = new System.Drawing.Point(13, 64);
-            this.label20.Name = "label20";
-            this.label20.Size = new System.Drawing.Size(115, 17);
-            this.label20.TabIndex = 6;
-            this.label20.Text = "Employee Position";
-            // 
-            // lblPayeeName
-            // 
-            this.lblPayeeName.AutoSize = true;
-            this.lblPayeeName.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblPayeeName.Location = new System.Drawing.Point(215, 43);
-            this.lblPayeeName.Name = "lblPayeeName";
-            this.lblPayeeName.Size = new System.Drawing.Size(131, 17);
-            this.lblPayeeName.TabIndex = 5;
-            this.lblPayeeName.Text = "(No Payee Selected.)";
-            // 
-            // label23
-            // 
-            this.label23.AutoSize = true;
-            this.label23.Location = new System.Drawing.Point(13, 43);
-            this.label23.Name = "label23";
-            this.label23.Size = new System.Drawing.Size(104, 17);
-            this.label23.TabIndex = 4;
-            this.label23.Text = "Employee Name";
-            // 
-            // lblPayeeNumber
-            // 
-            this.lblPayeeNumber.AutoSize = true;
-            this.lblPayeeNumber.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblPayeeNumber.Location = new System.Drawing.Point(215, 20);
-            this.lblPayeeNumber.Name = "lblPayeeNumber";
-            this.lblPayeeNumber.Size = new System.Drawing.Size(131, 17);
-            this.lblPayeeNumber.TabIndex = 3;
-            this.lblPayeeNumber.Text = "(No Payee Selected.)";
-            // 
-            // label27
-            // 
-            this.label27.AutoSize = true;
-            this.label27.Location = new System.Drawing.Point(13, 20);
-            this.label27.Name = "label27";
-            this.label27.Size = new System.Drawing.Size(117, 17);
-            this.label27.TabIndex = 2;
-            this.label27.Text = "Employee Number";
-            // 
-            // lblPayeeOffice
-            // 
-            this.lblPayeeOffice.AutoSize = true;
-            this.lblPayeeOffice.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblPayeeOffice.Location = new System.Drawing.Point(215, 86);
-            this.lblPayeeOffice.Name = "lblPayeeOffice";
-            this.lblPayeeOffice.Size = new System.Drawing.Size(131, 17);
-            this.lblPayeeOffice.TabIndex = 9;
-            this.lblPayeeOffice.Text = "(No Payee Selected.)";
-            // 
-            // label29
-            // 
-            this.label29.AutoSize = true;
-            this.label29.Location = new System.Drawing.Point(13, 86);
-            this.label29.Name = "label29";
-            this.label29.Size = new System.Drawing.Size(42, 17);
-            this.label29.TabIndex = 8;
-            this.label29.Text = "Office";
-            // 
             // Form1
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Inherit;
@@ -1967,6 +1969,10 @@
             this.grpOfficeDetails.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dGridOffices)).EndInit();
             this.tabPayees.ResumeLayout(false);
+            this.groupBox2.ResumeLayout(false);
+            this.groupBox2.PerformLayout();
+            this.groupBox1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.dGridPayee)).EndInit();
             this.tabAccounts.ResumeLayout(false);
             this.grpAcctDetails.ResumeLayout(false);
             this.grpAcctDetails.PerformLayout();
@@ -1974,10 +1980,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.dataGridAccounts)).EndInit();
             this.tabLogs.ResumeLayout(false);
             this.tabLogs.PerformLayout();
-            this.groupBox1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.dGridPayee)).EndInit();
-            this.groupBox2.ResumeLayout(false);
-            this.groupBox2.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 

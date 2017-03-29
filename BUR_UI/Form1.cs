@@ -1420,6 +1420,73 @@ namespace BUR_UI
             catch { }
         }
 
+        private void btnAddPayee_Click(object sender, EventArgs e)
+        {
+            ShowPayeeDialog("add");
+        }
+
+        private void ShowPayeeDialog(string operation)
+        {
+            DbLink Link = new DbLink();
+            Typer DbTyper = new Typer();
+            dlgPayee payeeDialog = new dlgPayee();
+            List<string> offices = new List<string>();
+
+            offices = Link.FillOffice();
+
+            foreach (string office in offices)
+            {
+                payeeDialog.cmbPayeeOffice.Items.Add(office);
+            }
+
+            if (operation == "add")
+            {
+                payeeDialog.Text = "Add Payee";
+                payeeDialog.lblPayeeSubText.Text = "Create a new Employee.";
+                payeeDialog.txtPayeeNumber.ReadOnly = false;
+
+                if (payeeDialog.ShowDialog() == DialogResult.OK)
+                {
+                    DbInsert SqlInsert = new DbInsert();
+                    SqlInsert.InsertPayee(
+                        payeeDialog.txtPayeeNumber.Text,
+                        payeeDialog.txtPayeeName.Text,
+                        payeeDialog.txtPayeePos.Text,
+                        DbTyper.GetSelectedOfficeCode(payeeDialog.cmbPayeeOffice.SelectedItem.ToString()));
+
+                    StartAdmin(false);
+                }
+            }
+            else
+            {
+                payeeDialog.Text = "Edit Payee";
+                payeeDialog.lblPayeeSubText.Text = "Update Employee details.";
+                payeeDialog.txtPayeeNumber.ReadOnly = true;
+
+                payeeDialog.txtPayeeNumber.Text = dGridPayee.SelectedRows[0].Cells[0].Value.ToString();
+                payeeDialog.txtPayeeName.Text = dGridPayee.SelectedRows[0].Cells[1].Value.ToString();
+                payeeDialog.txtPayeePos.Text = dGridPayee.SelectedRows[0].Cells[2].Value.ToString();
+                payeeDialog.cmbPayeeOffice.SelectedItem = dGridPayee.SelectedRows[0].Cells[3].Value.ToString();
+
+                if (payeeDialog.ShowDialog() == DialogResult.OK)
+                {
+                    DbInsert SqlInsert = new DbInsert();
+                    SqlInsert.UpdatePayee(
+                        payeeDialog.txtPayeeNumber.Text,
+                        payeeDialog.txtPayeeName.Text,
+                        payeeDialog.txtPayeePos.Text,
+                        DbTyper.GetSelectedOfficeCode(payeeDialog.cmbPayeeOffice.SelectedItem.ToString()));
+
+                    StartAdmin(false);
+                }
+            }
+        }
+
+        private void btnEditPayee_Click(object sender, EventArgs e)
+        {
+            ShowPayeeDialog("edit");
+        }
+
         //private void Form1_FormClosing(object sender, FormClosingEventArgs e)
         //{
         //    MessageBox.Show("Closing");

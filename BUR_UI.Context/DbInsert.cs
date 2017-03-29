@@ -171,5 +171,36 @@ namespace BUR_UI.Context
                 comm.ExecuteNonQuery();
             }
         }
+
+        public void InsertPayee(string payeeNumber, string payeeName, string payeePos, string payeeOfficeCode)
+        {
+            DbLink Link = new DbLink();
+
+            using (SqlConnection conn = Link.InitSql())
+            {
+                conn.Open();
+
+                SqlCommand comm = new SqlCommand("INSERT INTO dbo.tbl_Payee (Employee_Number, Employee_Name, Employee_Pos, Office_Code) " +
+                    "VALUES ('" + payeeNumber + "', '" + payeeName + "', '" + payeePos + "', '" + payeeOfficeCode + "')", conn);
+
+                comm.ExecuteNonQuery();
+            }
+        }
+
+        public void UpdatePayee(string payeeNumber, string payeeName, string payeePos, string payeeOfficeCode)
+        {
+            DbLink Link = new DbLink();
+
+            using (SqlConnection conn = Link.InitSql())
+            {
+                conn.Open();
+
+                SqlCommand comm = new SqlCommand("UPDATE dbo.tbl_Payee SET " +
+                    "Employee_Name = '" + payeeName + "', Employee_Pos = '" + payeePos + "', Office_Code = '" + payeeOfficeCode + "' " +
+                    "WHERE Employee_Number = '" + payeeNumber + "'", conn);
+
+                comm.ExecuteNonQuery();
+            }
+        }
     }
 }

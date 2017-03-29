@@ -1492,6 +1492,11 @@ namespace BUR_UI
 
         }
 
+        private void label28_Click(object sender, EventArgs e)
+        {
+
+        }
+
         //private void Form1_FormClosing(object sender, FormClosingEventArgs e)
         //{
         //    MessageBox.Show("Closing");

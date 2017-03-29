@@ -649,5 +649,29 @@ namespace BUR_UI.Interface
 
             return offices;
         }
+
+        public List<string> FillPayees()
+        {
+            List<string> payees = new List<string>();
+
+            using (SqlConnection conn = InitSql())
+            {
+                conn.Open();
+
+                SqlCommand comm = new SqlCommand("SELECT Employee_Name FROM dbo.tbl_Payee ORDER BY Employee_Name ASC", conn);
+
+                SqlDataReader reader = comm.ExecuteReader();
+
+                if (reader.HasRows)
+                {
+                    while (reader.Read())
+                    {
+                        payees.Add(reader.GetString(0));
+                    }
+                }
+            }
+
+            return payees;
+        }
     }
 }

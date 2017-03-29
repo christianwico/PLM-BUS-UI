@@ -68,5 +68,14 @@ namespace BUR_UI.Context.Properties {
                 return ResourceManager.GetString("ConnectionString", resourceCulture);
             }
         }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Data Source=(LocalDB)\MSSQLLocalDB;Initial Catalog=PLM_BUS;Integrated Security=true;.
+        /// </summary>
+        internal static string ConnectionStringLocal {
+            get {
+                return ResourceManager.GetString("ConnectionStringLocal", resourceCulture);
+            }
+        }
     }
 }

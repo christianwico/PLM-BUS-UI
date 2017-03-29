@@ -844,6 +844,10 @@ namespace BUR_UI
             List<AccountGridModel> Accounts = new List<AccountGridModel>();
             List<OfficeModel> Offices = new List<OfficeModel>();
 
+            dataGridUsers.Rows.Clear();
+            dataGridAccounts.Rows.Clear();
+            dGridOffices.Rows.Clear();
+
             DbLink dbLink = new DbLink();
             if (btnAdmin.Text == "Admin Panel")
             {
@@ -851,13 +855,17 @@ namespace BUR_UI
                 pnlMain.Visible = false;
                 pnlCreate.Visible = false;
                 pnlAdmin.Visible = true;
+
+                Users = dbLink.FillUserModel(Users);
+                Accounts = dbLink.FillAccountGridModel(Accounts);
+                Offices = dbLink.FillOfficeModel(Offices);
+
+                FillUserGrid(Users);
+                FillAccountGrid(Accounts);
+                FillOfficeGrid(Offices);
             }
             else
-            {
-                dataGridUsers.Rows.Clear();
-                dataGridAccounts.Rows.Clear();
-                dGridOffices.Rows.Clear();
-
+            { 
                 if (returnToMain)
                 {
                     btnAdmin.Text = "Admin Panel";
@@ -866,13 +874,7 @@ namespace BUR_UI
                 }
             }
 
-            Users = dbLink.FillUserModel(Users);
-            Accounts = dbLink.FillAccountGridModel(Accounts);
-            Offices = dbLink.FillOfficeModel(Offices);
-
-            FillUserGrid(Users);
-            FillAccountGrid(Accounts);
-            FillOfficeGrid(Offices);
+            
         }
 
         private void FillOfficeGrid(List<OfficeModel> offices)
@@ -1305,12 +1307,52 @@ namespace BUR_UI
 
         private void dGridOffices_SelectionChanged(object sender, EventArgs e)
         {
-            lblOfficeName.Text = dGridOffices.SelectedRows[0].Cells[1].Value.ToString() +
+            try
+            {
+                lblOfficeName.Text = dGridOffices.SelectedRows[0].Cells[1].Value.ToString() +
                 " (" + dGridOffices.SelectedRows[0].Cells[2].Value.ToString() + ")";
-            lblOfficeHead.Text = dGridOffices.SelectedRows[0].Cells[3].Value.ToString();
-            lblOfficeHeadPos.Text = dGridOffices.SelectedRows[0].Cells[4].Value.ToString();
+                lblOfficeHead.Text = dGridOffices.SelectedRows[0].Cells[3].Value.ToString();
+                lblOfficeHeadPos.Text = dGridOffices.SelectedRows[0].Cells[4].Value.ToString();
+            }
+            catch { }
+        }
 
+        private void btnAddOffice_Click(object sender, EventArgs e)
+        {
+            ShowOfficeDialog("add");
+        }
 
+        private void ShowOfficeDialog(string operation)
+        {
+            DbLink Link = new DbLink();
+            dlgOffice officeDialog = new dlgOffice();
+            List<string> payees = new List<string>();
+
+            payees = Link.FillPayees();
+
+            foreach (string payee in payees)
+            {
+                officeDialog.cmbOfficeHead.Items.Add(payee);
+            }
+
+            if (operation == "add")
+            {
+                officeDialog.Text = "Add Office";
+                officeDialog.lblDlgOfficeSubText.Text = "Create a new Office.";
+                
+
+                if (officeDialog.ShowDialog() == DialogResult.OK)
+                {
+                    DbInsert SqlInsert = new DbInsert();
+                    SqlInsert.InsertOffice(
+                        officeDialog.txtOfficeNameFull.Text,
+                        officeDialog.txtOfficeNameAbbr.Text,
+                        officeDialog.cmbOfficeHead.SelectedItem.ToString(),
+                        officeDialog.txtOfficeheadPos.Text);
+
+                    StartAdmin(false);
+                }
+            }
         }
 
         //private void Form1_FormClosing(object sender, FormClosingEventArgs e)

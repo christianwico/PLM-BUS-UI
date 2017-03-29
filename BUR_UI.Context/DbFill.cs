@@ -12,7 +12,7 @@ namespace BUR_UI.Context
         public List<string> FillOffice()
         {
             SqlConnection conn = new SqlConnection();
-            conn.ConnectionString = Interface.Properties.Resources.ConnectionString;
+            conn.ConnectionString = Interface.Properties.Resources.ConnectionStringLocal;
 
             using (conn)
             {

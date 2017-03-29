@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.lblUser = new System.Windows.Forms.Label();
             this.lblPos = new System.Windows.Forms.Label();
@@ -137,9 +137,16 @@
             this.grpOfficeDetails = new System.Windows.Forms.GroupBox();
             this.lblOfficeHeadPos = new System.Windows.Forms.Label();
             this.label26 = new System.Windows.Forms.Label();
+            this.lblOfficeHead = new System.Windows.Forms.Label();
+            this.label24 = new System.Windows.Forms.Label();
             this.lblOfficeName = new System.Windows.Forms.Label();
             this.label22 = new System.Windows.Forms.Label();
             this.dGridOffices = new System.Windows.Forms.DataGridView();
+            this.officeCode = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.officeNameFull = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.officeAbbr = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.officehead = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.officeheadPos = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tabPayees = new System.Windows.Forms.TabPage();
             this.tabAccounts = new System.Windows.Forms.TabPage();
             this.grpAcctDetails = new System.Windows.Forms.GroupBox();
@@ -164,13 +171,6 @@
             this.tabLogs = new System.Windows.Forms.TabPage();
             this.txtLogs = new System.Windows.Forms.TextBox();
             this.openFileDialog = new System.Windows.Forms.OpenFileDialog();
-            this.lblOfficeHead = new System.Windows.Forms.Label();
-            this.label24 = new System.Windows.Forms.Label();
-            this.officeCode = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.officeNameFull = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.officeAbbr = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.officehead = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.officeheadPos = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.grpUser.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.picPic)).BeginInit();
             this.contextMenuStrip1.SuspendLayout();
@@ -519,14 +519,14 @@
             this.colDate,
             this.colStaff});
             this.dataGridMain.ContextMenuStrip = this.contextMenuStrip1;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dataGridMain.DefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dataGridMain.DefaultCellStyle = dataGridViewCellStyle2;
             this.dataGridMain.Location = new System.Drawing.Point(3, 36);
             this.dataGridMain.MultiSelect = false;
             this.dataGridMain.Name = "dataGridMain";
@@ -1298,6 +1298,7 @@
             this.btnAddOffice.TabIndex = 0;
             this.btnAddOffice.Text = "Add Office";
             this.btnAddOffice.UseVisualStyleBackColor = true;
+            this.btnAddOffice.Click += new System.EventHandler(this.btnAddOffice_Click);
             // 
             // grpOfficeDetails
             // 
@@ -1333,6 +1334,25 @@
             this.label26.Size = new System.Drawing.Size(127, 17);
             this.label26.TabIndex = 6;
             this.label26.Text = "Office Head Position";
+            // 
+            // lblOfficeHead
+            // 
+            this.lblOfficeHead.AutoSize = true;
+            this.lblOfficeHead.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblOfficeHead.Location = new System.Drawing.Point(215, 58);
+            this.lblOfficeHead.Name = "lblOfficeHead";
+            this.lblOfficeHead.Size = new System.Drawing.Size(126, 17);
+            this.lblOfficeHead.TabIndex = 5;
+            this.lblOfficeHead.Text = "(No office selected.)";
+            // 
+            // label24
+            // 
+            this.label24.AutoSize = true;
+            this.label24.Location = new System.Drawing.Point(13, 58);
+            this.label24.Name = "label24";
+            this.label24.Size = new System.Drawing.Size(77, 17);
+            this.label24.TabIndex = 4;
+            this.label24.Text = "Office Head";
             // 
             // lblOfficeName
             // 
@@ -1373,6 +1393,45 @@
             this.dGridOffices.Size = new System.Drawing.Size(1187, 300);
             this.dGridOffices.TabIndex = 0;
             this.dGridOffices.SelectionChanged += new System.EventHandler(this.dGridOffices_SelectionChanged);
+            // 
+            // officeCode
+            // 
+            this.officeCode.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.officeCode.FillWeight = 10F;
+            this.officeCode.HeaderText = "Office Code";
+            this.officeCode.Name = "officeCode";
+            this.officeCode.ReadOnly = true;
+            // 
+            // officeNameFull
+            // 
+            this.officeNameFull.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.officeNameFull.FillWeight = 30F;
+            this.officeNameFull.HeaderText = "Office Name";
+            this.officeNameFull.Name = "officeNameFull";
+            this.officeNameFull.ReadOnly = true;
+            // 
+            // officeAbbr
+            // 
+            this.officeAbbr.HeaderText = "Office Name (Short)";
+            this.officeAbbr.Name = "officeAbbr";
+            this.officeAbbr.ReadOnly = true;
+            this.officeAbbr.Visible = false;
+            // 
+            // officehead
+            // 
+            this.officehead.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.officehead.FillWeight = 30F;
+            this.officehead.HeaderText = "Office Head";
+            this.officehead.Name = "officehead";
+            this.officehead.ReadOnly = true;
+            // 
+            // officeheadPos
+            // 
+            this.officeheadPos.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.officeheadPos.FillWeight = 30F;
+            this.officeheadPos.HeaderText = "Office Head Position";
+            this.officeheadPos.Name = "officeheadPos";
+            this.officeheadPos.ReadOnly = true;
             // 
             // tabPayees
             // 
@@ -1635,64 +1694,6 @@
             this.openFileDialog.FileName = "openFileDialog";
             this.openFileDialog.Title = "Select image";
             // 
-            // lblOfficeHead
-            // 
-            this.lblOfficeHead.AutoSize = true;
-            this.lblOfficeHead.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblOfficeHead.Location = new System.Drawing.Point(215, 58);
-            this.lblOfficeHead.Name = "lblOfficeHead";
-            this.lblOfficeHead.Size = new System.Drawing.Size(126, 17);
-            this.lblOfficeHead.TabIndex = 5;
-            this.lblOfficeHead.Text = "(No office selected.)";
-            // 
-            // label24
-            // 
-            this.label24.AutoSize = true;
-            this.label24.Location = new System.Drawing.Point(13, 58);
-            this.label24.Name = "label24";
-            this.label24.Size = new System.Drawing.Size(77, 17);
-            this.label24.TabIndex = 4;
-            this.label24.Text = "Office Head";
-            // 
-            // officeCode
-            // 
-            this.officeCode.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.officeCode.FillWeight = 10F;
-            this.officeCode.HeaderText = "Office Code";
-            this.officeCode.Name = "officeCode";
-            this.officeCode.ReadOnly = true;
-            // 
-            // officeNameFull
-            // 
-            this.officeNameFull.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.officeNameFull.FillWeight = 30F;
-            this.officeNameFull.HeaderText = "Office Name";
-            this.officeNameFull.Name = "officeNameFull";
-            this.officeNameFull.ReadOnly = true;
-            // 
-            // officeAbbr
-            // 
-            this.officeAbbr.HeaderText = "Office Name (Short)";
-            this.officeAbbr.Name = "officeAbbr";
-            this.officeAbbr.ReadOnly = true;
-            this.officeAbbr.Visible = false;
-            // 
-            // officehead
-            // 
-            this.officehead.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.officehead.FillWeight = 30F;
-            this.officehead.HeaderText = "Office Head";
-            this.officehead.Name = "officehead";
-            this.officehead.ReadOnly = true;
-            // 
-            // officeheadPos
-            // 
-            this.officeheadPos.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.officeheadPos.FillWeight = 30F;
-            this.officeheadPos.HeaderText = "Office Head Position";
-            this.officeheadPos.Name = "officeheadPos";
-            this.officeheadPos.ReadOnly = true;
-            // 
             // Form1
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Inherit;
@@ -1700,9 +1701,9 @@
             this.BackgroundImage = global::BUR_UI.Properties.Resources.bg;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(1264, 681);
+            this.Controls.Add(this.pnlCreate);
             this.Controls.Add(this.pnlAdmin);
             this.Controls.Add(this.pnlMain);
-            this.Controls.Add(this.pnlCreate);
             this.Controls.Add(this.picBanner);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.grpUser);

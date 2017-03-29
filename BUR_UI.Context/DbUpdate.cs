@@ -10,7 +10,7 @@ namespace BUR_UI.Context
             BURModel BUR = new Entities.BURModel();
 
             SqlConnection conn = new SqlConnection();
-            conn.ConnectionString = Properties.Resources.ConnectionString;
+            conn.ConnectionString = Properties.Resources.ConnectionStringLocal;
 
             using (conn)
             {
@@ -45,7 +45,7 @@ namespace BUR_UI.Context
         public BURModel FillParticulars(BURModel BUR)
         {
             SqlConnection conn = new SqlConnection();
-            conn.ConnectionString = Properties.Resources.ConnectionString;
+            conn.ConnectionString = Properties.Resources.ConnectionStringLocal;
 
             using (conn)
             {
@@ -79,7 +79,7 @@ namespace BUR_UI.Context
 
             using (SqlConnection conn = new SqlConnection())
             {
-                conn.ConnectionString = Properties.Resources.ConnectionString;
+                conn.ConnectionString = Properties.Resources.ConnectionStringLocal;
 
                 SqlCommand comm = new SqlCommand(
                     "UPDATE dbo.tbl_BO_Staff " +

@@ -7,7 +7,7 @@ namespace BUR_UI.Context
         public void DeleteBUR(string BUR_Number)
         {
             SqlConnection conn = new SqlConnection();
-            conn.ConnectionString = Properties.Resources.ConnectionString;
+            conn.ConnectionString = Properties.Resources.ConnectionStringLocal;
 
             using (conn)
             {

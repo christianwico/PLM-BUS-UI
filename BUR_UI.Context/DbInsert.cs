@@ -2,6 +2,7 @@
 using System.Data.SqlClient;
 using BUR_UI.Entities;
 using BUR_UI.Interface;
+using System.Windows.Forms;
 
 namespace BUR_UI.Context
 {
@@ -10,7 +11,7 @@ namespace BUR_UI.Context
         public void InsertBUR(BURModel BUR)
         {
             SqlConnection conn = new SqlConnection();
-            conn.ConnectionString = Properties.Resources.ConnectionString;
+            conn.ConnectionString = Properties.Resources.ConnectionStringLocal;
 
             using (conn)
             {
@@ -54,7 +55,7 @@ namespace BUR_UI.Context
         public void UpdateBUR(BURModel BUR)
         {
             SqlConnection conn = new SqlConnection();
-            conn.ConnectionString = Properties.Resources.ConnectionString;
+            conn.ConnectionString = Properties.Resources.ConnectionStringLocal;
 
             using (conn)
             {
@@ -93,6 +94,55 @@ namespace BUR_UI.Context
                 // Insert to the AB table.
                 SqlCommand comm = new SqlCommand("UPDATE dbo.tbl_AB SET AB_Amount = " + acct.AB + " WHERE Acct_Code = '" + acct.AcctCode + "'", conn);
                 conn.Open();
+                comm.ExecuteNonQuery();
+            }
+        }
+
+        public void InsertOffice(string officeNameFull, string officeNameAbbr, string officehead, string officeheadPos)
+        {
+            DbLink Link = new DbLink();
+            Typer SqlTyper = new Typer();
+
+            using (SqlConnection conn = Link.InitSql())
+            {
+                int officeCode = 31;
+                int officeheadId = 22;
+
+                conn.Open();
+
+                SqlCommand comm = new SqlCommand("SELECT TOP 1 Office_Code FROM dbo.tbl_A_Certified ORDER BY Office_Code DESC", conn);
+                SqlDataReader reader = comm.ExecuteReader();
+
+                if (reader.HasRows)
+                {
+                    while (reader.Read())
+                    {
+                        officeCode = int.Parse(reader.GetString(0));
+                        officeCode++;
+                    }
+                }
+
+                reader.Close();
+
+                comm.CommandText = "INSERT INTO dbo.tbl_Officehead (Officehead_Name, Officehead_Pos) " +
+                    "VALUES ('" + officehead + "', '" + officeheadPos + "'); SELECT SCOPE_IDENTITY();";
+
+                try
+                {
+                    officeheadId = int.Parse(comm.ExecuteScalar().ToString());
+                }
+                catch (SqlException ex)
+                {
+                    MessageBox.Show(ex.Message.ToString(), "SqlException occured", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message.ToString(), "Exception occured", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+
+                comm.CommandText = "INSERT INTO dbo.tbl_A_Certified (Office_Code, Office_NameFull, Office_NameAbbr, OfficeheadId) " +
+                    "VALUES ('" + officeCode + "', '" + officeNameFull + "', '" + officeNameAbbr + "', " + officeheadId + ")";
+
                 comm.ExecuteNonQuery();
             }
         }

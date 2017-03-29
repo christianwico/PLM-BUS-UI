@@ -112,6 +112,12 @@
     <Compile Include="dlgCreate.Designer.cs">
       <DependentUpon>dlgCreate.cs</DependentUpon>
     </Compile>
+    <Compile Include="dlgOffice.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="dlgOffice.Designer.cs">
+      <DependentUpon>dlgOffice.cs</DependentUpon>
+    </Compile>
     <Compile Include="dlgSelectMonth.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -143,6 +149,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="dlgCreate.resx">
       <DependentUpon>dlgCreate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="dlgOffice.resx">
+      <DependentUpon>dlgOffice.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="dlgSelectMonth.resx">
       <DependentUpon>dlgSelectMonth.cs</DependentUpon>

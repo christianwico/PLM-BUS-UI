@@ -843,10 +843,12 @@ namespace BUR_UI
             List<UserModel> Users = new List<UserModel>();
             List<AccountGridModel> Accounts = new List<AccountGridModel>();
             List<OfficeModel> Offices = new List<OfficeModel>();
+            List<PayeeModel> Payees = new List<PayeeModel>();
 
             dataGridUsers.Rows.Clear();
             dataGridAccounts.Rows.Clear();
             dGridOffices.Rows.Clear();
+            dGridPayee.Rows.Clear();
 
             DbLink dbLink = new DbLink();
             if (btnAdmin.Text == "Admin Panel")
@@ -859,10 +861,12 @@ namespace BUR_UI
                 Users = dbLink.FillUserModel(Users);
                 Accounts = dbLink.FillAccountGridModel(Accounts);
                 Offices = dbLink.FillOfficeModel(Offices);
+                Payees = dbLink.FillPayeeModel(Payees);
 
                 FillUserGrid(Users);
                 FillAccountGrid(Accounts);
                 FillOfficeGrid(Offices);
+                FillPayeeGrid(Payees);
             }
             else
             { 
@@ -875,6 +879,16 @@ namespace BUR_UI
             }
 
             
+        }
+
+        private void FillPayeeGrid(List<PayeeModel> payees)
+        {
+            dGridPayee.Rows.Clear();
+
+            foreach (PayeeModel payee in payees)
+            {
+                dGridPayee.Rows.Add(payee.PayeeNumber, payee.PayeeName, payee.PayeePos, payee.PayeeOfficeCode);
+            }
         }
 
         private void FillOfficeGrid(List<OfficeModel> offices)
@@ -1388,6 +1402,22 @@ namespace BUR_UI
         private void btnDeleteOffice_Click(object sender, EventArgs e)
         {
             
+        }
+
+        private void dGridPayee_SelectionChanged(object sender, EventArgs e)
+        {
+            Typer DbTyper = new Typer();
+
+            try
+            {
+                lblPayeeNumber.Text = dGridPayee.SelectedRows[0].Cells[0].Value.ToString();
+                lblPayeeName.Text = dGridPayee.SelectedRows[0].Cells[1].Value.ToString();
+                lblPayeePos.Text = dGridPayee.SelectedRows[0].Cells[2].Value.ToString();
+                lblPayeeOffice.Text = DbTyper.GetSelectedOfficeName(dGridPayee.SelectedRows[0].Cells[3].Value.ToString());
+
+                btnEditPayee.Enabled = true;
+            }
+            catch { }
         }
 
         //private void Form1_FormClosing(object sender, FormClosingEventArgs e)

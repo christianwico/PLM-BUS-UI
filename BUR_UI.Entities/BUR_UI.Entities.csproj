@@ -55,6 +55,7 @@
     <Compile Include="BURModel.cs" />
     <Compile Include="Items.cs" />
     <Compile Include="OfficeModel.cs" />
+    <Compile Include="PayeeModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="AccountsModel.cs" />
     <Compile Include="RAOModel.cs" />

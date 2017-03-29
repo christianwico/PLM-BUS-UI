@@ -673,5 +673,33 @@ namespace BUR_UI.Interface
 
             return payees;
         }
+
+        public List<PayeeModel> FillPayeeModel(List<PayeeModel> payees)
+        {
+            using (SqlConnection conn = InitSql())
+            {
+                conn.Open();
+
+                SqlCommand comm = new SqlCommand("SELECT Employee_Number, Employee_Name, Employee_Pos, Office_Code " +
+                    "FROM dbo.tbl_Payee", conn);
+
+                SqlDataReader reader = comm.ExecuteReader();
+
+                if (reader.HasRows) {
+                    while (reader.Read())
+                    {
+                        payees.Add(new PayeeModel()
+                        {
+                            PayeeNumber = reader.GetString(0),
+                            PayeeName = reader.GetString(1),
+                            PayeePos = reader.GetString(2),
+                            PayeeOfficeCode = reader.GetString(3)
+                        });
+                    }
+                }
+            }
+
+            return payees;
+        }
     }
 }

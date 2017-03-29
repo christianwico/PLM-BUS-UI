@@ -115,7 +115,7 @@ namespace BUR_UI
         {
             dataGridMain.Rows.Clear();
             dataGridAccounts.Rows.Clear();
-            dataGridUsers.Rows.Clear();
+            
             foreach (var bur in BURList)
             {
                 try
@@ -828,10 +828,7 @@ namespace BUR_UI
         }
         private void btnSelect_Click(object sender, EventArgs e)
         {
-            if (openFileDialog.ShowDialog() == DialogResult.OK)
-            {
-                picUserDetail.ImageLocation = openFileDialog.FileName;
-            }
+            
         }
         private void btnAdmin_Click(object sender, EventArgs e)
         {
@@ -845,10 +842,10 @@ namespace BUR_UI
             List<OfficeModel> Offices = new List<OfficeModel>();
             List<PayeeModel> Payees = new List<PayeeModel>();
 
-            dataGridUsers.Rows.Clear();
             dataGridAccounts.Rows.Clear();
             dGridOffices.Rows.Clear();
             dGridPayee.Rows.Clear();
+            dGridUsers.Rows.Clear();
 
             DbLink dbLink = new DbLink();
             if (btnAdmin.Text == "Admin Panel")
@@ -948,105 +945,30 @@ namespace BUR_UI
         }
         private void FillUserGrid(List<UserModel> users)
         {
-            foreach (var user in users)
+            foreach (UserModel user in users)
             {
-                dataGridUsers.Rows.Add(
+                if (lblUser.Text != user.User_Name)
+                {
+                    dGridUsers.Rows.Add(
                     user.User_Number,
                     user.User_Name,
                     user.Discriminator,
                     user.Position,
                     user.Picture);
+                }
             }
-
-            if (dataGridUsers.RowCount > 0)
-                FillDetails();
         }
         private void dataGridUsers_SelectionChanged(object sender, EventArgs e)
         {
-            if (dataGridUsers.RowCount > 0)
-                FillDetails();
+            
         }
         private void FillDetails()
         {
-            try
-            {
-                txtStaffName.Text = dataGridUsers.SelectedRows[0].Cells[1].Value.ToString();
-                txtStaffPosition.Text = dataGridUsers.SelectedRows[0].Cells[3].Value.ToString();
-
-                if (dataGridUsers.SelectedRows[0].Cells[2].Value.ToString() == "Admin")
-                    cmbType.SelectedIndex = 0;
-                else
-                    cmbType.SelectedIndex = 1;
-
-                picUserDetail.ImageLocation = dataGridUsers.SelectedRows[0].Cells[4].Value.ToString();
-            } catch { }
+            
         }
         private void btnAllowEdit_Click(object sender, EventArgs e)
         {
-            if (btnAllowEdit.Text == "Allow Edit")
-            {
-                btnAllowEdit.BackColor = Color.AliceBlue;
-                btnAllowEdit.Text = "Save changes";
-                dataGridUsers.Enabled = false;
-                btnAdmin.Enabled = false;
-                btnLogOut.Enabled = false;
-                btnSelect.Enabled = true;
-                btnChangePass.Enabled = true;
-                btnDeleteUser.Enabled = true;
-                txtStaffName.ReadOnly = false;
-                cmbType.Enabled = true;
-                txtStaffPosition.ReadOnly = false;
-            }
-            else
-            {
-                btnAllowEdit.BackColor = Control.DefaultBackColor;
-                btnAllowEdit.Text = "Allow Edit";
-                dataGridUsers.Enabled = true;
-                btnAdmin.Enabled = true;
-                btnLogOut.Enabled = true;
-                btnSelect.Enabled = false;
-                btnChangePass.Enabled = false;
-                btnDeleteUser.Enabled = false;
-                txtStaffName.ReadOnly = true;
-                cmbType.Enabled = false;
-                txtStaffPosition.ReadOnly = true;
-
-                if (MessageBox.Show(
-                    "Are you sure you want to save the changes to this user?",
-                    "Save?", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
-                {
-                    Context.DbUpdate dbUpdate = new Context.DbUpdate();
-                    DbLink dbLink = new DbLink();
-
-                    UserModel User = new UserModel();
-
-                    User.User_Number = dataGridUsers.SelectedRows[0].Cells[0].Value.ToString();
-                    User.User_Name = txtStaffName.Text;
-                    User.Discriminator = cmbType.Text;
-                    User.Position = txtStaffPosition.Text;
-                    User.Picture = picUserDetail.ImageLocation;
-
-                    dbUpdate.UpdateUser(User);
-
-                    dataGridUsers.SelectedRows[0].Cells[1].Value = User.User_Name;
-                    dataGridUsers.SelectedRows[0].Cells[2].Value = User.Discriminator;
-                    dataGridUsers.SelectedRows[0].Cells[3].Value = User.Position;
-                    dataGridUsers.SelectedRows[0].Cells[4].Value = User.Picture;
-
-                    string log = DateTime.Now.ToString() + " USER " + User.User_Name + " updated by " + User_Name + ".";
-                    link.PushLog(log);
-                    txtLogs.Clear();
-                    txtLogs.Text = link.FillLogs();
-
-                    MessageBox.Show(
-                        "Staff " + User.User_Number + "'s details have been successfully updated!",
-                        "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                }
-                else
-                {
-                    FillDetails();
-                }
-            }
+            
         }
         private void btnEditAccount_Click(object sender, EventArgs e)
         {
@@ -1101,17 +1023,7 @@ namespace BUR_UI
         }
         private void btnChangePass_Click(object sender, EventArgs e)
         {
-            dlgChangePass dlgPass = new dlgChangePass();
-            string StaffNumber = dataGridUsers.SelectedRows[0].Cells[0].Value.ToString();
-
-            if (dlgPass.ShowDialog(StaffNumber) == DialogResult.OK)
-            {
-                MessageBox.Show("You have successfully changed user " + txtStaffName.Text +
-                    "'s password!", "Password changed",
-                    MessageBoxButtons.OK, MessageBoxIcon.Information);
-            }
-
-
+            
         }
 
         private void picBanner_Click(object sender, EventArgs e)
@@ -1495,6 +1407,19 @@ namespace BUR_UI
         private void label28_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void dGridUsers_SelectionChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                lblStaffNumber.Text = dGridUsers.SelectedRows[0].Cells[0].Value.ToString();
+                lblStaffName.Text = dGridUsers.SelectedRows[0].Cells[1].Value.ToString();
+                lblStaffPosition.Text = dGridUsers.SelectedRows[0].Cells[3].Value.ToString();
+                lblStaffType.Text = dGridUsers.SelectedRows[0].Cells[2].Value.ToString();
+                picStaffPic.ImageLocation = dGridUsers.SelectedRows[0].Cells[4].Value.ToString();
+            }
+            catch { }
         }
 
         //private void Form1_FormClosing(object sender, FormClosingEventArgs e)

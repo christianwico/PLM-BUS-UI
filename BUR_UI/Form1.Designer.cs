@@ -170,14 +170,14 @@
             this.openFileDialog = new System.Windows.Forms.OpenFileDialog();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.button1 = new System.Windows.Forms.Button();
-            this.button3 = new System.Windows.Forms.Button();
-            this.button6 = new System.Windows.Forms.Button();
+            this.btnEditStaff = new System.Windows.Forms.Button();
+            this.btnAddStaff = new System.Windows.Forms.Button();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
-            this.label13 = new System.Windows.Forms.Label();
+            this.lblStaffPosition = new System.Windows.Forms.Label();
             this.label14 = new System.Windows.Forms.Label();
-            this.label15 = new System.Windows.Forms.Label();
+            this.lblStaffName = new System.Windows.Forms.Label();
             this.label19 = new System.Windows.Forms.Label();
-            this.label21 = new System.Windows.Forms.Label();
+            this.lblStaffNumber = new System.Windows.Forms.Label();
             this.label25 = new System.Windows.Forms.Label();
             this.dGridUsers = new System.Windows.Forms.DataGridView();
             this.staffNumber = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -185,9 +185,9 @@
             this.staffType = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.staffPosition = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.staffPic = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.label28 = new System.Windows.Forms.Label();
+            this.lblStaffType = new System.Windows.Forms.Label();
             this.label30 = new System.Windows.Forms.Label();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.picStaffPic = new System.Windows.Forms.PictureBox();
             this.grpUser.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.picPic)).BeginInit();
             this.contextMenuStrip1.SuspendLayout();
@@ -218,7 +218,7 @@
             this.groupBox3.SuspendLayout();
             this.groupBox4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dGridUsers)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.picStaffPic)).BeginInit();
             this.SuspendLayout();
             // 
             // lblUser
@@ -1696,8 +1696,8 @@
             // groupBox3
             // 
             this.groupBox3.Controls.Add(this.button1);
-            this.groupBox3.Controls.Add(this.button3);
-            this.groupBox3.Controls.Add(this.button6);
+            this.groupBox3.Controls.Add(this.btnEditStaff);
+            this.groupBox3.Controls.Add(this.btnAddStaff);
             this.groupBox3.ForeColor = System.Drawing.SystemColors.ControlLightLight;
             this.groupBox3.Location = new System.Drawing.Point(861, 16);
             this.groupBox3.Name = "groupBox3";
@@ -1716,38 +1716,39 @@
             this.button1.TabIndex = 2;
             this.button1.Text = "Delete Staff";
             this.button1.UseVisualStyleBackColor = true;
+            this.button1.Visible = false;
             // 
-            // button3
+            // btnEditStaff
             // 
-            this.button3.Enabled = false;
-            this.button3.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.button3.Location = new System.Drawing.Point(74, 64);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(100, 30);
-            this.button3.TabIndex = 1;
-            this.button3.Text = "Edit Staff";
-            this.button3.UseVisualStyleBackColor = true;
+            this.btnEditStaff.Enabled = false;
+            this.btnEditStaff.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.btnEditStaff.Location = new System.Drawing.Point(74, 64);
+            this.btnEditStaff.Name = "btnEditStaff";
+            this.btnEditStaff.Size = new System.Drawing.Size(100, 30);
+            this.btnEditStaff.TabIndex = 1;
+            this.btnEditStaff.Text = "Edit Staff";
+            this.btnEditStaff.UseVisualStyleBackColor = true;
             // 
-            // button6
+            // btnAddStaff
             // 
-            this.button6.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.button6.Location = new System.Drawing.Point(74, 28);
-            this.button6.Name = "button6";
-            this.button6.Size = new System.Drawing.Size(100, 30);
-            this.button6.TabIndex = 0;
-            this.button6.Text = "Add Staff";
-            this.button6.UseVisualStyleBackColor = true;
+            this.btnAddStaff.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.btnAddStaff.Location = new System.Drawing.Point(74, 28);
+            this.btnAddStaff.Name = "btnAddStaff";
+            this.btnAddStaff.Size = new System.Drawing.Size(100, 30);
+            this.btnAddStaff.TabIndex = 0;
+            this.btnAddStaff.Text = "Add Staff";
+            this.btnAddStaff.UseVisualStyleBackColor = true;
             // 
             // groupBox4
             // 
-            this.groupBox4.Controls.Add(this.pictureBox1);
-            this.groupBox4.Controls.Add(this.label28);
+            this.groupBox4.Controls.Add(this.picStaffPic);
+            this.groupBox4.Controls.Add(this.lblStaffType);
             this.groupBox4.Controls.Add(this.label30);
-            this.groupBox4.Controls.Add(this.label13);
+            this.groupBox4.Controls.Add(this.lblStaffPosition);
             this.groupBox4.Controls.Add(this.label14);
-            this.groupBox4.Controls.Add(this.label15);
+            this.groupBox4.Controls.Add(this.lblStaffName);
             this.groupBox4.Controls.Add(this.label19);
-            this.groupBox4.Controls.Add(this.label21);
+            this.groupBox4.Controls.Add(this.lblStaffNumber);
             this.groupBox4.Controls.Add(this.label25);
             this.groupBox4.ForeColor = System.Drawing.SystemColors.ControlLightLight;
             this.groupBox4.Location = new System.Drawing.Point(15, 16);
@@ -1757,15 +1758,15 @@
             this.groupBox4.TabStop = false;
             this.groupBox4.Text = "Staff Details";
             // 
-            // label13
+            // lblStaffPosition
             // 
-            this.label13.AutoSize = true;
-            this.label13.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label13.Location = new System.Drawing.Point(215, 92);
-            this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(120, 17);
-            this.label13.TabIndex = 7;
-            this.label13.Text = "(No staff selected.)";
+            this.lblStaffPosition.AutoSize = true;
+            this.lblStaffPosition.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblStaffPosition.Location = new System.Drawing.Point(215, 92);
+            this.lblStaffPosition.Name = "lblStaffPosition";
+            this.lblStaffPosition.Size = new System.Drawing.Size(120, 17);
+            this.lblStaffPosition.TabIndex = 7;
+            this.lblStaffPosition.Text = "(No staff selected.)";
             // 
             // label14
             // 
@@ -1776,15 +1777,15 @@
             this.label14.TabIndex = 6;
             this.label14.Text = "Staff Position";
             // 
-            // label15
+            // lblStaffName
             // 
-            this.label15.AutoSize = true;
-            this.label15.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label15.Location = new System.Drawing.Point(215, 71);
-            this.label15.Name = "label15";
-            this.label15.Size = new System.Drawing.Size(120, 17);
-            this.label15.TabIndex = 5;
-            this.label15.Text = "(No staff selected.)";
+            this.lblStaffName.AutoSize = true;
+            this.lblStaffName.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblStaffName.Location = new System.Drawing.Point(215, 71);
+            this.lblStaffName.Name = "lblStaffName";
+            this.lblStaffName.Size = new System.Drawing.Size(120, 17);
+            this.lblStaffName.TabIndex = 5;
+            this.lblStaffName.Text = "(No staff selected.)";
             // 
             // label19
             // 
@@ -1795,15 +1796,15 @@
             this.label19.TabIndex = 4;
             this.label19.Text = "Staff Name";
             // 
-            // label21
+            // lblStaffNumber
             // 
-            this.label21.AutoSize = true;
-            this.label21.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label21.Location = new System.Drawing.Point(215, 48);
-            this.label21.Name = "label21";
-            this.label21.Size = new System.Drawing.Size(120, 17);
-            this.label21.TabIndex = 3;
-            this.label21.Text = "(No staff selected.)";
+            this.lblStaffNumber.AutoSize = true;
+            this.lblStaffNumber.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblStaffNumber.Location = new System.Drawing.Point(215, 48);
+            this.lblStaffNumber.Name = "lblStaffNumber";
+            this.lblStaffNumber.Size = new System.Drawing.Size(120, 17);
+            this.lblStaffNumber.TabIndex = 3;
+            this.lblStaffNumber.Text = "(No staff selected.)";
             // 
             // label25
             // 
@@ -1833,6 +1834,7 @@
             this.dGridUsers.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dGridUsers.Size = new System.Drawing.Size(1187, 300);
             this.dGridUsers.TabIndex = 3;
+            this.dGridUsers.SelectionChanged += new System.EventHandler(this.dGridUsers_SelectionChanged);
             // 
             // staffNumber
             // 
@@ -1872,16 +1874,16 @@
             this.staffPic.ReadOnly = true;
             this.staffPic.Visible = false;
             // 
-            // label28
+            // lblStaffType
             // 
-            this.label28.AutoSize = true;
-            this.label28.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label28.Location = new System.Drawing.Point(105, 18);
-            this.label28.Name = "label28";
-            this.label28.Size = new System.Drawing.Size(154, 21);
-            this.label28.TabIndex = 9;
-            this.label28.Text = "(No staff selected.)";
-            this.label28.Click += new System.EventHandler(this.label28_Click);
+            this.lblStaffType.AutoSize = true;
+            this.lblStaffType.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblStaffType.Location = new System.Drawing.Point(105, 18);
+            this.lblStaffType.Name = "lblStaffType";
+            this.lblStaffType.Size = new System.Drawing.Size(154, 21);
+            this.lblStaffType.TabIndex = 9;
+            this.lblStaffType.Text = "(No staff selected.)";
+            this.lblStaffType.Click += new System.EventHandler(this.label28_Click);
             // 
             // label30
             // 
@@ -1892,13 +1894,14 @@
             this.label30.TabIndex = 8;
             this.label30.Text = "Staff Type";
             // 
-            // pictureBox1
+            // picStaffPic
             // 
-            this.pictureBox1.Location = new System.Drawing.Point(729, 9);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(111, 111);
-            this.pictureBox1.TabIndex = 10;
-            this.pictureBox1.TabStop = false;
+            this.picStaffPic.Location = new System.Drawing.Point(729, 9);
+            this.picStaffPic.Name = "picStaffPic";
+            this.picStaffPic.Size = new System.Drawing.Size(111, 111);
+            this.picStaffPic.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.picStaffPic.TabIndex = 10;
+            this.picStaffPic.TabStop = false;
             // 
             // Form1
             // 
@@ -1961,7 +1964,7 @@
             this.groupBox4.ResumeLayout(false);
             this.groupBox4.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dGridUsers)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.picStaffPic)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -2107,16 +2110,16 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn5;
         private System.Windows.Forms.GroupBox groupBox3;
         private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Button button3;
-        private System.Windows.Forms.Button button6;
+        private System.Windows.Forms.Button btnEditStaff;
+        private System.Windows.Forms.Button btnAddStaff;
         private System.Windows.Forms.GroupBox groupBox4;
-        private System.Windows.Forms.Label label28;
+        private System.Windows.Forms.Label lblStaffType;
         private System.Windows.Forms.Label label30;
-        private System.Windows.Forms.Label label13;
+        private System.Windows.Forms.Label lblStaffPosition;
         private System.Windows.Forms.Label label14;
-        private System.Windows.Forms.Label label15;
+        private System.Windows.Forms.Label lblStaffName;
         private System.Windows.Forms.Label label19;
-        private System.Windows.Forms.Label label21;
+        private System.Windows.Forms.Label lblStaffNumber;
         private System.Windows.Forms.Label label25;
         private System.Windows.Forms.DataGridView dGridUsers;
         private System.Windows.Forms.DataGridViewTextBoxColumn staffNumber;
@@ -2124,7 +2127,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn staffType;
         private System.Windows.Forms.DataGridViewTextBoxColumn staffPosition;
         private System.Windows.Forms.DataGridViewTextBoxColumn staffPic;
-        private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.PictureBox picStaffPic;
     }
 }
 

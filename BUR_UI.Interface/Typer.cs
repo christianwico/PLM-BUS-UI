@@ -1,4 +1,5 @@
-﻿using System.Data.SqlClient;
+﻿using System;
+using System.Data.SqlClient;
 
 namespace BUR_UI.Interface
 {
@@ -9,7 +10,7 @@ namespace BUR_UI.Interface
             DbLink DbLink = new DbLink();
             string Office_Code = "12";
 
-            using (SqlConnection conn = DbLink.InitSql())
+            using (SqlConnection conn = DbLink.InitializeSqlConnection())
             {
                 SqlCommand comm = new SqlCommand(
                     "SELECT Office_Code " +
@@ -38,7 +39,7 @@ namespace BUR_UI.Interface
             DbLink DbLink = new DbLink();
             int Class_Code = 0;
 
-            using (SqlConnection conn = DbLink.InitSql())
+            using (SqlConnection conn = DbLink.InitializeSqlConnection())
             {
                 SqlCommand comm = new SqlCommand(
                     "SELECT Acct_ClassId " +
@@ -67,7 +68,7 @@ namespace BUR_UI.Interface
             DbLink DbLink = new DbLink();
             string picURL = "";
 
-            using (SqlConnection conn = DbLink.InitSql())
+            using (SqlConnection conn = DbLink.InitializeSqlConnection())
             {
                 SqlCommand comm = new SqlCommand(
                     "SELECT  PicURL " +
@@ -95,7 +96,7 @@ namespace BUR_UI.Interface
         {
             DbLink dbLink = new DbLink();
 
-            using (SqlConnection conn = dbLink.InitSql())
+            using (SqlConnection conn = dbLink.InitializeSqlConnection())
             {
                 SqlCommand comm = new SqlCommand(
                     "SELECT * FROM dbo.tbl_BO_Staff " +
@@ -114,7 +115,7 @@ namespace BUR_UI.Interface
             DbLink DbLink = new DbLink();
             string Employee_Number = "";
 
-            using (SqlConnection conn = DbLink.InitSql())
+            using (SqlConnection conn = DbLink.InitializeSqlConnection())
             {
                 SqlCommand comm = new SqlCommand(
                     "SELECT Employee_Number " +
@@ -160,7 +161,7 @@ namespace BUR_UI.Interface
             DbLink DbLink = new DbLink();
             string Office_Name = "";
 
-            using (SqlConnection conn = DbLink.InitSql())
+            using (SqlConnection conn = DbLink.InitializeSqlConnection())
             {
                 SqlCommand comm = new SqlCommand(
                     "SELECT Office_NameAbbr " +
@@ -189,7 +190,7 @@ namespace BUR_UI.Interface
             DbLink DbLink = new DbLink();
             string Password = "";
 
-            using (SqlConnection conn = DbLink.InitSql())
+            using (SqlConnection conn = DbLink.InitializeSqlConnection())
             {
                 SqlCommand comm = new SqlCommand(
                     "SELECT A.Employee_Pos FROM dbo.tbl_Payee AS A INNER JOIN dbo.tbl_BO_Staff AS B ON A.Employee_Number = B.BStaff_Number WHERE BStaff_Number = '" + userName + "'", conn);
@@ -214,7 +215,7 @@ namespace BUR_UI.Interface
             DbLink DbLink = new DbLink();
             string BStaff_Name = "";
 
-            using (SqlConnection conn = DbLink.InitSql())
+            using (SqlConnection conn = DbLink.InitializeSqlConnection())
             {
                 SqlCommand comm = new SqlCommand(
                     "SELECT A.Employee_Name " +
@@ -243,7 +244,7 @@ namespace BUR_UI.Interface
             DbLink DbLink = new DbLink();
             string Payee = "";
 
-            using (SqlConnection conn = DbLink.InitSql())
+            using (SqlConnection conn = DbLink.InitializeSqlConnection())
             {
                 SqlCommand comm = new SqlCommand(
                     "SELECT Employee_Name " +
@@ -273,7 +274,7 @@ namespace BUR_UI.Interface
             DbLink DbLink = new DbLink();
             string BDHead_Name = "";
 
-            using (SqlConnection conn = DbLink.InitSql())
+            using (SqlConnection conn = DbLink.InitializeSqlConnection())
             {
                 SqlCommand comm = new SqlCommand(
                     "SELECT BDHead_Name " +
@@ -302,7 +303,7 @@ namespace BUR_UI.Interface
 
             string Acct_Class_Name = "";
             
-            using (SqlConnection conn = DbLink.InitSql())
+            using (SqlConnection conn = DbLink.InitializeSqlConnection())
             {
                 SqlCommand comm = new SqlCommand(
                     "SELECT A.Acct_Class_Name " + 
@@ -331,7 +332,7 @@ namespace BUR_UI.Interface
             DbLink DbLink = new DbLink();
             string Acct_Name = "";
 
-            using (SqlConnection conn = DbLink.InitSql())
+            using (SqlConnection conn = DbLink.InitializeSqlConnection())
             {
                 SqlCommand comm = new SqlCommand(
                     "SELECT Acct_Name " +
@@ -358,7 +359,7 @@ namespace BUR_UI.Interface
             DbLink DbLink = new DbLink();
             string[] Officehead = new string[2];
 
-            using (SqlConnection conn = DbLink.InitSql())
+            using (SqlConnection conn = DbLink.InitializeSqlConnection())
             {
                 SqlCommand comm = new SqlCommand(
                     "SELECT A.Officehead_Name, A.Officehead_Pos " +
@@ -382,6 +383,32 @@ namespace BUR_UI.Interface
             }
 
             return Officehead;
+        }
+
+        public string GetSelectedPayeeNumber(string payeeName)
+        {
+            string payeeNumber = "";
+            DbLink Link = new DbLink();
+
+            using (SqlConnection conn = Link.InitializeSqlConnection())
+            {
+                conn.Open();
+
+                SqlCommand comm = new SqlCommand("SELECT Employee_Number FROM dbo.tbl_Payee " +
+                    "WHERE Employee_Name = '" + payeeName + "'", conn);
+
+                SqlDataReader reader = comm.ExecuteReader();
+
+                if (reader.HasRows)
+                {
+                    while (reader.Read())
+                    {
+                        payeeNumber = reader.GetString(0);
+                    }
+                }
+            }
+
+            return payeeNumber;
         }
     }
 }

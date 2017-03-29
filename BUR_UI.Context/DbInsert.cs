@@ -3,6 +3,8 @@ using System.Data.SqlClient;
 using BUR_UI.Entities;
 using BUR_UI.Interface;
 using System.Windows.Forms;
+using System.Text;
+using System.Security.Cryptography;
 
 namespace BUR_UI.Context
 {
@@ -89,7 +91,7 @@ namespace BUR_UI.Context
         {
             DbLink link = new DbLink();
 
-            using (SqlConnection conn = link.InitSql())
+            using (SqlConnection conn = link.InitializeSqlConnection())
             {
                 // Insert to the AB table.
                 SqlCommand comm = new SqlCommand("UPDATE dbo.tbl_AB SET AB_Amount = " + acct.AB + " WHERE Acct_Code = '" + acct.AcctCode + "'", conn);
@@ -103,7 +105,7 @@ namespace BUR_UI.Context
             DbLink Link = new DbLink();
             Typer SqlTyper = new Typer();
 
-            using (SqlConnection conn = Link.InitSql())
+            using (SqlConnection conn = Link.InitializeSqlConnection())
             {
                 int officeCode = 31;
                 int officeheadId = 22;
@@ -150,7 +152,7 @@ namespace BUR_UI.Context
         public void UpdateOffice(string officeCode, string officeNameFull, string officeNameAbbr, string officehead, string officeheadPos)
         {
             DbLink Link = new DbLink();
-            using (SqlConnection conn = Link.InitSql())
+            using (SqlConnection conn = Link.InitializeSqlConnection())
             {
                 conn.Open();
 
@@ -176,7 +178,7 @@ namespace BUR_UI.Context
         {
             DbLink Link = new DbLink();
 
-            using (SqlConnection conn = Link.InitSql())
+            using (SqlConnection conn = Link.InitializeSqlConnection())
             {
                 conn.Open();
 
@@ -191,13 +193,67 @@ namespace BUR_UI.Context
         {
             DbLink Link = new DbLink();
 
-            using (SqlConnection conn = Link.InitSql())
+            using (SqlConnection conn = Link.InitializeSqlConnection())
             {
                 conn.Open();
 
                 SqlCommand comm = new SqlCommand("UPDATE dbo.tbl_Payee SET " +
                     "Employee_Name = '" + payeeName + "', Employee_Pos = '" + payeePos + "', Office_Code = '" + payeeOfficeCode + "' " +
                     "WHERE Employee_Number = '" + payeeNumber + "'", conn);
+
+                comm.ExecuteNonQuery();
+            }
+        }
+
+        public void InsertStaff(string staffNumber, string staffType, string password, string image)
+        {
+            DbLink Link = new DbLink();
+
+            password = Crypt.ConvertToHash(password);
+
+            using (SqlConnection conn = Link.InitializeSqlConnection())
+            {
+                conn.Open();
+
+                SqlCommand comm = new SqlCommand("INSERT INTO dbo.tbl_BO_Staff " +
+                    "(BStaff_Number, Discriminator, Password, PicURL) " +
+                    "VALUES ('" + staffNumber + "', '" + staffType + "', '" + password + "', '" + image + "')", conn);
+
+                comm.ExecuteNonQuery();
+            }
+        }
+
+        
+
+        public void UpdateStaff(string staffNumber, string staffType, string staffPic)
+        {
+            DbLink Link = new DbLink();
+
+            using (SqlConnection conn = Link.InitializeSqlConnection())
+            {
+                conn.Open();
+
+                SqlCommand comm = new SqlCommand("UPDATE dbo.tbl_BO_Staff " +
+                    "SET Discriminator = '" + staffType + "', PicURL = '" + staffPic + "' " +
+                    "WHERE BStaff_Number = '" + staffNumber + "'", conn);
+
+                comm.ExecuteNonQuery();
+            }
+        }
+
+        public void UpdateStaff(string staffNumber, string staffType, string password, string staffPic)
+        {
+            DbLink Link = new DbLink();
+
+            password = Crypt.ConvertToHash(password);
+
+            using (SqlConnection conn = Link.InitializeSqlConnection())
+            {
+                conn.Open();
+
+                SqlCommand comm = new SqlCommand("UPDATE dbo.tbl_BO_Staff " +
+                    "SET Discriminator = '" + staffType + "', Password = '" + password + "', PicURL = '" + staffPic + "' " +
+                    "WHERE BStaff_Number = '" + staffNumber + "'", conn);
 
                 comm.ExecuteNonQuery();
             }

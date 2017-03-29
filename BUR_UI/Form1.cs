@@ -1418,8 +1418,98 @@ namespace BUR_UI
                 lblStaffPosition.Text = dGridUsers.SelectedRows[0].Cells[3].Value.ToString();
                 lblStaffType.Text = dGridUsers.SelectedRows[0].Cells[2].Value.ToString();
                 picStaffPic.ImageLocation = dGridUsers.SelectedRows[0].Cells[4].Value.ToString();
+
+                btnEditStaff.Enabled = true;
             }
             catch { }
+        }
+
+        private void btnAddStaff_Click(object sender, EventArgs e)
+        {
+            ShowStaffDialog("add");
+        }
+
+        private void ShowStaffDialog(string operation)
+        {
+            DbLink Link = new DbLink();
+            Typer DbTyper = new Typer();
+            dlgStaff staffDialog = new dlgStaff();
+            List<string> payees = new List<string>();
+
+            payees = Link.FillPayees();
+
+            foreach (string payee in payees)
+            {
+                staffDialog.cmbPayee.Items.Add(payee);
+            }
+
+            if (operation == "add")
+            {
+                staffDialog.Text = "Add Staff";
+                staffDialog.lblStaffSubText.Text = "Create a new BO Staff.";
+
+                staffDialog.cmbPayee.Enabled = true;
+
+                staffDialog.pnlPasswordConceal.Visible = false;
+
+                if (staffDialog.ShowDialog() == DialogResult.OK)
+                {
+                    DbInsert SqlInsert = new DbInsert();
+                    SqlInsert.InsertStaff(
+                        DbTyper.GetSelectedPayeeNumber(staffDialog.cmbPayee.Text),
+                        staffDialog.cmbStaffType.SelectedItem.ToString(),
+                        staffDialog.txtPassword.Text,
+                        staffDialog.txtImage.Text);
+
+                    StartAdmin(false);
+                }
+            }
+            else
+            {
+                staffDialog.Text = "Edit Staff";
+                staffDialog.lblStaffSubText.Text = "Update BO Staff details.";
+
+                staffDialog.cmbPayee.Enabled = false;
+                
+                try
+                {
+                    staffDialog.cmbPayee.SelectedItem = dGridUsers.SelectedRows[0].Cells[1].Value.ToString();
+                    staffDialog.cmbStaffType.SelectedItem = dGridUsers.SelectedRows[0].Cells[2].Value.ToString();
+                    staffDialog.txtImage.Text = dGridUsers.SelectedRows[0].Cells[4].Value.ToString();
+                }
+                catch { }
+
+                staffDialog.pnlPasswordConceal.Visible = true;
+
+                if (staffDialog.ShowDialog() == DialogResult.OK)
+                {
+                    DbInsert SqlInsert = new DbInsert();
+                    
+                    if (staffDialog.PasswordEdit)
+                    {
+                        SqlInsert.UpdateStaff(
+                            DbTyper.GetSelectedPayeeNumber(staffDialog.cmbPayee.SelectedItem.ToString()),
+                            staffDialog.cmbStaffType.SelectedItem.ToString(),
+                            staffDialog.txtPassword.Text,
+                            staffDialog.txtImage.Text
+                        );
+                    } else
+                    {
+                        SqlInsert.UpdateStaff(
+                            DbTyper.GetSelectedPayeeNumber(staffDialog.cmbPayee.SelectedItem.ToString()),
+                            staffDialog.cmbStaffType.SelectedItem.ToString(),
+                            staffDialog.txtImage.Text
+                        );
+                    }
+
+                    StartAdmin(false);
+                }
+            }
+        }
+
+        private void btnEditStaff_Click(object sender, EventArgs e)
+        {
+            ShowStaffDialog("edit");
         }
 
         //private void Form1_FormClosing(object sender, FormClosingEventArgs e)

@@ -18,7 +18,7 @@ namespace BUR_UI.Interface
                 DateTime.Now.Month.ToString("D2") + "-" +
                 DateTime.Now.AddDays(1).Day.ToString("D2");
 
-            using (SqlConnection conn = InitSql())
+            using (SqlConnection conn = InitializeSqlConnection())
             {
                 SqlCommand comm = new SqlCommand(
                     "SELECT A.Item_Amount, A.Acct_Code " +
@@ -52,7 +52,7 @@ namespace BUR_UI.Interface
         {
             List<AccountsModel> Acct = new List<AccountsModel>();
 
-            using (SqlConnection conn = InitSql())
+            using (SqlConnection conn = InitializeSqlConnection())
             {
                 SqlCommand comm = new SqlCommand(
                     "SELECT A.Item_Amount, A.Acct_Code, C.Acct_ClassId " +
@@ -86,7 +86,7 @@ namespace BUR_UI.Interface
 
         public void PushLog(string log)
         {
-            using (SqlConnection conn = InitSql())
+            using (SqlConnection conn = InitializeSqlConnection())
             {
                 SqlCommand comm = new SqlCommand("INSERT INTO dbo.tbl_Log (Msg) VALUES ('" + log + "')", conn);
 
@@ -100,7 +100,7 @@ namespace BUR_UI.Interface
         {
             List<string> Offices = new List<string>();
 
-            using (SqlConnection conn = InitSql())
+            using (SqlConnection conn = InitializeSqlConnection())
             {
                 SqlCommand comm = new SqlCommand(
                     "SELECT Office_NameAbbr FROM dbo.tbl_A_Certified",
@@ -123,7 +123,7 @@ namespace BUR_UI.Interface
         }
         public void ChangePassword(string staffNumber, string newPassword)
         {
-            using (SqlConnection conn = InitSql())
+            using (SqlConnection conn = InitializeSqlConnection())
             {
                 SqlCommand comm = new SqlCommand(
                     "UPDATE dbo.tbl_BO_Staff " +
@@ -137,12 +137,9 @@ namespace BUR_UI.Interface
         }
         public bool userValidate(string User, string Pass)
         {
+            Pass = Crypt.ConvertToHash(Pass);
 
-            Object hasher = MD5.Create();
-
-            
-
-            using (SqlConnection conn = InitSql())
+            using (SqlConnection conn = InitializeSqlConnection())
             {
                 SqlCommand comm = new SqlCommand(
                     "SELECT * FROM dbo.tbl_BO_Staff " +
@@ -165,7 +162,7 @@ namespace BUR_UI.Interface
         {
             List<string> PRs = new List<string>();
 
-            using (SqlConnection conn = InitSql())
+            using (SqlConnection conn = InitializeSqlConnection())
             {
                 SqlCommand comm = new SqlCommand(
                     "SELECT PR_Code FROM dbo.tbl_PR",
@@ -194,7 +191,7 @@ namespace BUR_UI.Interface
 
             if (Office_Name != "External")
             {
-                using (SqlConnection conn = InitSql())
+                using (SqlConnection conn = InitializeSqlConnection())
                 {
                     SqlCommand comm = new SqlCommand(
                         "SELECT Employee_Name " +
@@ -216,7 +213,7 @@ namespace BUR_UI.Interface
                 }
             } else
             {
-                using (SqlConnection conn = InitSql())
+                using (SqlConnection conn = InitializeSqlConnection())
                 {
                     SqlCommand comm = new SqlCommand(
                         "SELECT Employee_Name " +
@@ -243,7 +240,7 @@ namespace BUR_UI.Interface
         {
             List<string> Classes = new List<string>();
 
-            using (SqlConnection conn = InitSql())
+            using (SqlConnection conn = InitializeSqlConnection())
             {
                 SqlCommand comm = new SqlCommand(
                     "SELECT Acct_Class_Name FROM dbo.tbl_Classification",
@@ -270,7 +267,7 @@ namespace BUR_UI.Interface
 
             List<string> Code = new List<string>();
 
-            using (SqlConnection conn = InitSql())
+            using (SqlConnection conn = InitializeSqlConnection())
             {
                 SqlCommand comm = new SqlCommand(
                     "SELECT Acct_Code, Acct_Name " +
@@ -299,7 +296,7 @@ namespace BUR_UI.Interface
         {
             string name = "";
 
-            using (SqlConnection conn = InitSql())
+            using (SqlConnection conn = InitializeSqlConnection())
             {
                 SqlCommand comm = new SqlCommand(
                     "SELECT Acct_Name " +
@@ -329,7 +326,7 @@ namespace BUR_UI.Interface
             List<Entities.BURModel> BUR = new List<Entities.BURModel>();
             Typer Typer = new Typer();
 
-            SqlConnection conn = InitSql();
+            SqlConnection conn = InitializeSqlConnection();
 
             using (conn)
             {
@@ -359,7 +356,7 @@ namespace BUR_UI.Interface
 
             return BUR;
         }
-        public SqlConnection InitSql()
+        public SqlConnection InitializeSqlConnection()
         {
             SqlConnection conn = new SqlConnection();
             conn.ConnectionString = Properties.Resources.ConnectionStringLocal;
@@ -370,7 +367,7 @@ namespace BUR_UI.Interface
         {
             List<ABModel> AB = new List<ABModel>();
 
-            using (SqlConnection conn = InitSql())
+            using (SqlConnection conn = InitializeSqlConnection())
             {
                 SqlCommand comm = new SqlCommand(
                     "SELECT AB_Amount, Acct_Code " +
@@ -400,7 +397,7 @@ namespace BUR_UI.Interface
         {
             List<AccountsModel> Acct = new List<AccountsModel>();
 
-            using (SqlConnection conn = InitSql())
+            using (SqlConnection conn = InitializeSqlConnection())
             {
                 SqlCommand comm = new SqlCommand(
                     "SELECT A.Item_Amount, A.Acct_Code " +
@@ -436,7 +433,7 @@ namespace BUR_UI.Interface
         {
             List<ABModel> AB = new List<ABModel>();
 
-            using (SqlConnection conn = InitSql())
+            using (SqlConnection conn = InitializeSqlConnection())
             {
                 SqlCommand comm = new SqlCommand(
                     "SELECT A.AB_Amount, A.Acct_Code " +
@@ -472,7 +469,7 @@ namespace BUR_UI.Interface
             List<BURModel> BUR = new List<BURModel>();
             Typer Typer = new Typer();
 
-            SqlConnection conn = InitSql();
+            SqlConnection conn = InitializeSqlConnection();
 
             using (conn)
             {
@@ -508,7 +505,7 @@ namespace BUR_UI.Interface
         }
         public List<UserModel> FillUserModel(List<UserModel> users)
         {
-            using (SqlConnection conn = InitSql())
+            using (SqlConnection conn = InitializeSqlConnection())
             {
                 SqlCommand comm = new SqlCommand(
                     "SELECT A.BStaff_Number, B.Employee_Name, A.Discriminator, B.Employee_Pos, A.PicURL " +
@@ -539,7 +536,7 @@ namespace BUR_UI.Interface
         }
         public List<AccountGridModel> FillAccountGridModel(List<AccountGridModel> accounts)
         {
-            using (SqlConnection conn = InitSql())
+            using (SqlConnection conn = InitializeSqlConnection())
             {
                 SqlCommand comm = new SqlCommand(
                     "SELECT A.Acct_Code, A.Acct_Name, B.Acct_Class_Name, C.AB_Amount FROM" +
@@ -573,7 +570,7 @@ namespace BUR_UI.Interface
         public string FillLogs()
         {
             string logs = "";
-            using (SqlConnection conn = InitSql())
+            using (SqlConnection conn = InitializeSqlConnection())
             {
                 SqlCommand comm = new SqlCommand("SELECT Msg FROM dbo.tbl_Log ORDER BY Id DESC", conn);
                 conn.Open();
@@ -597,7 +594,7 @@ namespace BUR_UI.Interface
             DbLink link = new DbLink();
             List<RAOModel> RAO = new List<RAOModel>();
 
-            using (SqlConnection conn = InitSql())
+            using (SqlConnection conn = InitializeSqlConnection())
             {
                 SqlCommand comm = new SqlCommand("SELECT BUR_No, BUR_FDate FROM dbo.tbl_BUR WHERE BUR_FDate BETWEEN '" + janThisYear + "' AND '" + dateToday + "' ORDER BY BUR_No ASC", conn);
 
@@ -624,7 +621,7 @@ namespace BUR_UI.Interface
 
         public List<OfficeModel> FillOfficeModel(List<OfficeModel> offices)
         {
-            using (SqlConnection conn = InitSql())
+            using (SqlConnection conn = InitializeSqlConnection())
             {
                 conn.Open();
 
@@ -656,7 +653,7 @@ namespace BUR_UI.Interface
         {
             List<string> payees = new List<string>();
 
-            using (SqlConnection conn = InitSql())
+            using (SqlConnection conn = InitializeSqlConnection())
             {
                 conn.Open();
 
@@ -678,7 +675,7 @@ namespace BUR_UI.Interface
 
         public List<PayeeModel> FillPayeeModel(List<PayeeModel> payees)
         {
-            using (SqlConnection conn = InitSql())
+            using (SqlConnection conn = InitializeSqlConnection())
             {
                 conn.Open();
 
@@ -702,6 +699,30 @@ namespace BUR_UI.Interface
             }
 
             return payees;
+        }
+
+        public List<string> FillStaff()
+        {
+            List<string> staff = new List<string>();
+
+            using (SqlConnection conn = InitializeSqlConnection())
+            {
+                conn.Open();
+
+                SqlCommand comm = new SqlCommand("SELECT Employee_Name FROM dbo.tbl_Payee", conn);
+
+                SqlDataReader reader = comm.ExecuteReader();
+
+                if (reader.HasRows)
+                {
+                    while (reader.Read())
+                    {
+                        staff.Add(reader.GetString(0));
+                    }
+                }
+            }
+
+            return staff;
         }
     }
 }

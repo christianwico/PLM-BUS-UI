@@ -1313,6 +1313,9 @@ namespace BUR_UI
                 " (" + dGridOffices.SelectedRows[0].Cells[2].Value.ToString() + ")";
                 lblOfficeHead.Text = dGridOffices.SelectedRows[0].Cells[3].Value.ToString();
                 lblOfficeHeadPos.Text = dGridOffices.SelectedRows[0].Cells[4].Value.ToString();
+
+                btnEditOffice.Enabled = true;
+                btnDeleteOffice.Enabled = true;
             }
             catch { }
         }
@@ -1352,7 +1355,39 @@ namespace BUR_UI
 
                     StartAdmin(false);
                 }
+            } else
+            {
+                officeDialog.Text = "Edit Office";
+                officeDialog.lblDlgOfficeSubText.Text = "Update Office details.";
+
+                officeDialog.txtOfficeNameFull.Text = dGridOffices.SelectedRows[0].Cells[1].Value.ToString();
+                officeDialog.txtOfficeNameAbbr.Text = dGridOffices.SelectedRows[0].Cells[2].Value.ToString();
+                officeDialog.cmbOfficeHead.SelectedItem = dGridOffices.SelectedRows[0].Cells[3].Value.ToString();
+                officeDialog.txtOfficeheadPos.Text = dGridOffices.SelectedRows[0].Cells[4].Value.ToString();
+
+                if (officeDialog.ShowDialog() == DialogResult.OK)
+                {
+                    DbInsert SqlInsert = new DbInsert();
+                    SqlInsert.UpdateOffice(
+                        dGridOffices.SelectedRows[0].Cells[0].Value.ToString(),
+                        officeDialog.txtOfficeNameFull.Text,
+                        officeDialog.txtOfficeNameAbbr.Text,
+                        officeDialog.cmbOfficeHead.SelectedItem.ToString(),
+                        officeDialog.txtOfficeheadPos.Text);
+
+                    StartAdmin(false);
+                }
             }
+        }
+
+        private void btnEditOffice_Click(object sender, EventArgs e)
+        {
+            ShowOfficeDialog("edit");
+        }
+
+        private void btnDeleteOffice_Click(object sender, EventArgs e)
+        {
+            
         }
 
         //private void Form1_FormClosing(object sender, FormClosingEventArgs e)

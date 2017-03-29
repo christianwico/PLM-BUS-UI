@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.lblUser = new System.Windows.Forms.Label();
             this.lblPos = new System.Windows.Forms.Label();
@@ -519,14 +519,14 @@
             this.colDate,
             this.colStaff});
             this.dataGridMain.ContextMenuStrip = this.contextMenuStrip1;
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dataGridMain.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dataGridMain.DefaultCellStyle = dataGridViewCellStyle1;
             this.dataGridMain.Location = new System.Drawing.Point(3, 36);
             this.dataGridMain.MultiSelect = false;
             this.dataGridMain.Name = "dataGridMain";
@@ -1277,6 +1277,8 @@
             this.btnDeleteOffice.TabIndex = 2;
             this.btnDeleteOffice.Text = "Delete Office";
             this.btnDeleteOffice.UseVisualStyleBackColor = true;
+            this.btnDeleteOffice.Visible = false;
+            this.btnDeleteOffice.Click += new System.EventHandler(this.btnDeleteOffice_Click);
             // 
             // btnEditOffice
             // 
@@ -1288,6 +1290,7 @@
             this.btnEditOffice.TabIndex = 1;
             this.btnEditOffice.Text = "Edit Office";
             this.btnEditOffice.UseVisualStyleBackColor = true;
+            this.btnEditOffice.Click += new System.EventHandler(this.btnEditOffice_Click);
             // 
             // btnAddOffice
             // 
@@ -1701,8 +1704,8 @@
             this.BackgroundImage = global::BUR_UI.Properties.Resources.bg;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(1264, 681);
-            this.Controls.Add(this.pnlCreate);
             this.Controls.Add(this.pnlAdmin);
+            this.Controls.Add(this.pnlCreate);
             this.Controls.Add(this.pnlMain);
             this.Controls.Add(this.picBanner);
             this.Controls.Add(this.label4);

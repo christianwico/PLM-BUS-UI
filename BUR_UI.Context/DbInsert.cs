@@ -146,5 +146,30 @@ namespace BUR_UI.Context
                 comm.ExecuteNonQuery();
             }
         }
+
+        public void UpdateOffice(string officeCode, string officeNameFull, string officeNameAbbr, string officehead, string officeheadPos)
+        {
+            DbLink Link = new DbLink();
+            using (SqlConnection conn = Link.InitSql())
+            {
+                conn.Open();
+
+                SqlCommand comm = new SqlCommand("UPDATE dbo.tbl_A_Certified SET " +
+                    "Office_NameFull = '" + officeNameFull + "', " +
+                    "Office_NameAbbr = '" + officeNameAbbr + "' " +
+                    "WHERE Office_Code = '" + officeCode + "'; " +
+                    "SELECT OfficeheadId FROM dbo.tbl_A_Certified " +
+                    "WHERE Office_Code = '" + officeCode + "'", conn);
+
+                int officeheadId = int.Parse(comm.ExecuteScalar().ToString());
+
+                comm.CommandText = "UPDATE dbo.tbl_Officehead SET " +
+                    "Officehead_Name = '" + officehead + "', " +
+                    "Officehead_Pos = '" + officeheadPos + "' " +
+                    "WHERE OfficeheadId = '" + officeheadId + "'";
+
+                comm.ExecuteNonQuery();
+            }
+        }
     }
 }

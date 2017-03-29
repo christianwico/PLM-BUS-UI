@@ -83,9 +83,7 @@ namespace BUR_UI.Context
 
                 SqlCommand comm = new SqlCommand(
                     "UPDATE dbo.tbl_BO_Staff " +
-                    "SET BStaff_Name = '" + user.User_Name + "', " +
-                    "Discriminator = '" + user.Discriminator + "', " +
-                    "Position = '" + user.Position + "', " +
+                    "SET Discriminator = '" + user.Discriminator + "', " +
                     "PicURL = '" + user.Picture + "'" +
                     "WHERE BStaff_Number = '" + user.User_Number + "'", conn);
 

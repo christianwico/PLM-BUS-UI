@@ -511,7 +511,9 @@ namespace BUR_UI.Interface
             using (SqlConnection conn = InitSql())
             {
                 SqlCommand comm = new SqlCommand(
-                    "SELECT * FROM dbo.tbl_BO_Staff", conn);
+                    "SELECT A.BStaff_Number, B.Employee_Name, A.Discriminator, B.Employee_Pos, A.PicURL " +
+                    "FROM dbo.tbl_BO_Staff AS A " +
+                    "INNER JOIN dbo.tbl_Payee AS B ON A.BStaff_Number = B.Employee_Number", conn);
 
                 conn.Open();
 
@@ -523,11 +525,11 @@ namespace BUR_UI.Interface
                     {
                         users.Add(new UserModel()
                         {
-                            User_Number = reader.GetString(1),
-                            User_Name = reader.GetString(2),
-                            Discriminator = reader.GetString(3),
-                            Position = reader.GetString(5),
-                            Picture = reader.GetString(6)
+                            User_Number = reader.GetString(0),
+                            User_Name = reader.GetString(1),
+                            Discriminator = reader.GetString(2),
+                            Position = reader.GetString(3),
+                            Picture = reader.GetString(4)
                         });
                     }
                 }

@@ -192,7 +192,7 @@ namespace BUR_UI.Interface
             using (SqlConnection conn = DbLink.InitSql())
             {
                 SqlCommand comm = new SqlCommand(
-                    "SELECT Position FROM dbo.tbl_BO_Staff WHERE BStaff_Number = '" + userName + "'", conn);
+                    "SELECT A.Employee_Pos FROM dbo.tbl_Payee AS A INNER JOIN dbo.tbl_BO_Staff AS B ON A.Employee_Number = B.BStaff_Number WHERE BStaff_Number = '" + userName + "'", conn);
 
                 conn.Open();
 
@@ -217,9 +217,10 @@ namespace BUR_UI.Interface
             using (SqlConnection conn = DbLink.InitSql())
             {
                 SqlCommand comm = new SqlCommand(
-                    "SELECT BStaff_Name " +
-                    "FROM dbo.tbl_BO_Staff " +
-                    "WHERE BStaff_Number = '" + BStaff_Number + "'",
+                    "SELECT A.Employee_Name " +
+                    "FROM dbo.tbl_Payee AS A " +
+                    "INNER JOIN dbo.tbl_BO_Staff AS B ON A.Employee_Number = B.BStaff_Number " +
+                    "WHERE B.BStaff_Number = '" + BStaff_Number + "'",
                     conn);
 
                 conn.Open();
@@ -381,33 +382,6 @@ namespace BUR_UI.Interface
             }
 
             return Officehead;
-        }
-        public string GetSelectedStaffCode(string Staff_Name)
-        {
-            DbLink dbLink = new DbLink();
-
-            string Staff_Number = "";
-
-            using (SqlConnection conn = dbLink.InitSql())
-            {
-                SqlCommand comm = new SqlCommand(
-                    "SELECT BStaff_Number FROM dbo.tbl_BO_Staff WHERE " +
-                    "BStaff_Name LIKE '%" + Staff_Name + "%'", conn);
-
-                conn.Open();
-
-                SqlDataReader reader = comm.ExecuteReader();
-
-                if (reader.HasRows)
-                {
-                    while (reader.Read())
-                    {
-                        Staff_Number = reader.GetString(0);
-                    }
-                }
-            }
-
-            return Staff_Number;
         }
     }
 }
